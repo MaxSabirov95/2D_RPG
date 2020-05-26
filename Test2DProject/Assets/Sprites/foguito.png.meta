@@ -1,0 +1,928 @@
+fileFormatVersion: 2
+guid: a3d23e81fa81b0a449955c8adccdd622
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8973815026251136177
+    second: foguito_0
+  - first:
+      213: -6006058805419219724
+    second: foguito_1
+  - first:
+      213: -254673304807725291
+    second: foguito_2
+  - first:
+      213: -3536141577783866632
+    second: foguito_3
+  - first:
+      213: 4373911193915109102
+    second: foguito_4
+  - first:
+      213: -1967730622287628776
+    second: foguito_5
+  - first:
+      213: 7215440742161614716
+    second: foguito_6
+  - first:
+      213: 5296941956031337895
+    second: foguito_7
+  - first:
+      213: 4405263525241733383
+    second: foguito_8
+  - first:
+      213: 8493520908382837342
+    second: foguito_9
+  - first:
+      213: 3997310436518988425
+    second: foguito_10
+  - first:
+      213: -3391831258791084992
+    second: foguito_11
+  - first:
+      213: 4115725216823510785
+    second: foguito_12
+  - first:
+      213: -4810899909649630684
+    second: foguito_13
+  - first:
+      213: 3197721569080456222
+    second: foguito_14
+  - first:
+      213: -6159990336317917712
+    second: foguito_15
+  - first:
+      213: 6333681761268832277
+    second: foguito_16
+  - first:
+      213: 511198718100892093
+    second: foguito_17
+  - first:
+      213: 8905104963774318579
+    second: foguito_18
+  - first:
+      213: -5822428023468862958
+    second: foguito_19
+  - first:
+      213: 9161184753215466550
+    second: foguito_20
+  - first:
+      213: -3157159248689096937
+    second: foguito_21
+  - first:
+      213: -8331440984031670465
+    second: foguito_22
+  - first:
+      213: 5492245655137713730
+    second: foguito_23
+  - first:
+      213: 6423046451028749156
+    second: foguito_24
+  - first:
+      213: 4262565753441239305
+    second: foguito_25
+  - first:
+      213: -4665339135223835648
+    second: foguito_26
+  - first:
+      213: 5634253340599693037
+    second: foguito_27
+  - first:
+      213: -5524054578359163035
+    second: foguito_28
+  - first:
+      213: -4226066559193028451
+    second: foguito_29
+  - first:
+      213: -1312313573881672517
+    second: foguito_30
+  - first:
+      213: -7354474333099959454
+    second: foguito_31
+  - first:
+      213: -9062606989723054053
+    second: foguito_32
+  - first:
+      213: -8492880893196890275
+    second: foguito_33
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: foguito_0
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 168
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c89d46a419e55e47a36c36923294586
+      internalID: -8973815026251136177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 173
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce8251c3f0f8324cb4fa29d562ae91e
+      internalID: -6006058805419219724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_2
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 175
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729e91f94ad16a64d8929c53b000f338
+      internalID: -254673304807725291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_3
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 166
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fac93c938239234e87efb4d0ace89b7
+      internalID: -3536141577783866632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_4
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 177
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa13ebf2df7d7264588e2baabe0b8cf7
+      internalID: 4373911193915109102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_5
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 173
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3565bbaf16c01aa4b8bb95b2f4149f6a
+      internalID: -1967730622287628776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_6
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 173
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2ce057abb28db4cb33e0ca4d9dbffb
+      internalID: 7215440742161614716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 173
+        width: 15
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a601345905714494f860505b4c304f15
+      internalID: 5296941956031337895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 171
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3b2d7d2ffc8204c8fdd03c1155c49e
+      internalID: 4405263525241733383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_9
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 173
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc6394252f25d246860afa937fae1a5
+      internalID: 8493520908382837342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_10
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 173
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393cf450b93ccd944bd485c43ee37a94
+      internalID: 3997310436518988425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_11
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 164
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8057aa625e09f45be5718143a33ae7
+      internalID: -3391831258791084992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_12
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 166
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5cca94ae1e6894db45223ef2ca08cc
+      internalID: 4115725216823510785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_13
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 168
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e95043016b98f147b65136ec4d3f2c9
+      internalID: -4810899909649630684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_14
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 166
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac065e05b5109fd439d4ac3c05a263c2
+      internalID: 3197721569080456222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_15
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 134
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11eb5bf3c31ad51458c862ea05439070
+      internalID: -6159990336317917712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_16
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 134
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9029bd8975ebf2146b0130e0be6b49e4
+      internalID: 6333681761268832277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_17
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 166
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bab1c303cc5d30499d9c71e49e322c9
+      internalID: 511198718100892093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_18
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 134
+        width: 41
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e870ad8555db544aa7a19dca41bdc29
+      internalID: 8905104963774318579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_19
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 134
+        width: 41
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af2cc126ed9f36c4890b8297912c0d09
+      internalID: -5822428023468862958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_20
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 134
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2186454a67b90294ab4ecd42728b41ca
+      internalID: 9161184753215466550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_21
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 162
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5742e3a401f6cf44984518664cea32df
+      internalID: -3157159248689096937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_22
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 134
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c08c4371e8536148a9d4ba7fa835f5a
+      internalID: -8331440984031670465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_23
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 134
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb89a5fde75d604ea4e36140d23ea22
+      internalID: 5492245655137713730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_24
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 134
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c9db13ba3f46f4ba7320e8180b53ab
+      internalID: 6423046451028749156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_25
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 103
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edbaa8ec7f5430d4e9f773460ebd0f50
+      internalID: 4262565753441239305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_26
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 10
+        width: 56
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8cc774189042046b8c2dbda1a6bf8b
+      internalID: -4665339135223835648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_27
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 10
+        width: 52
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ad5f45660f47fb4684b93e0de689fd0
+      internalID: 5634253340599693037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_28
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 110
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83fb4b31a4d9ffe47a428ed3af2eb901
+      internalID: -5524054578359163035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_29
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 10
+        width: 50
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61726b019ae1df8438911af1c7d4e65d
+      internalID: -4226066559193028451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_30
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 10
+        width: 54
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7acf9a74b295f84c9b4a393a49cbbde
+      internalID: -1312313573881672517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_31
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 93
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a26b81cefb78c824295a28a18cddf4cb
+      internalID: -7354474333099959454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_32
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 82
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa015a5e2f8b5043a5ec6d5bde4544f
+      internalID: -9062606989723054053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foguito_33
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 30
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29dbd09d8ba18814ca10fec98f009992
+      internalID: -8492880893196890275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1cfa9a704dbf93b44b108cae70ffa16b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
