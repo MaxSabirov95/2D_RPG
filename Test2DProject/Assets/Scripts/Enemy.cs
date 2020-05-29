@@ -60,7 +60,7 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 case enemytypes.FireSlime:
                     DropItems();
-                    goals.Killquest();
+                    //goals.Killquest();
                     killingPlayer.XP += GiveXP;
                     break;
                 default:
