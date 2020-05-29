@@ -14,8 +14,6 @@ namespace Max_Almog.MyCompany.MyGame
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
-
-
         #region Photon Callbacks
 
 
@@ -32,6 +30,7 @@ namespace Max_Almog.MyCompany.MyGame
         #region Public Fields
 
         public static GameManager instance;
+        public GameObject playerPref;
 
         #endregion
 
@@ -50,6 +49,23 @@ namespace Max_Almog.MyCompany.MyGame
         private void Start()
         {
             instance = this;
+            if (playerPref == null)
+            {
+                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
+            }
+            else
+            {
+                if (PlayerMovement.LocalPlayerInstance == null)
+                {
+                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+                    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                    PhotonNetwork.Instantiate(this.playerPref.name, new Vector3(-7f, 0f, 0f), Quaternion.identity, 0);
+                }
+                else
+                {
+                    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+                }
+            }
         }
 
         #endregion
