@@ -22,6 +22,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
+            Player = PlayerMovement.LocalPlayerInstance.GetComponent<PlayerUI>();
             Physics2D.IgnoreLayerCollision(12, 9);
             talkWithNPC.SetActive(false);
         }
