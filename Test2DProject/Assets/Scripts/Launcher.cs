@@ -3,7 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-namespace Com.MyCompany.MyGame
+namespace Max_Almog.MyCompany.MyGame
 {
     public class Launcher : MonoBehaviourPunCallbacks
     {

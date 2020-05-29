@@ -3,68 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameUI : MonoBehaviour
+namespace Max_Almog.MyCompany.MyGame
 {
-    public static int skillpoints;
-    public Text skillpointsText;
-    public GameObject skillPointBoard;
-    private bool SkillBoard;
-
-    public GameObject inventoryBoard;
-    private bool InventoryBoard;
-
-
-    private void Start()
+    public class GameUI : MonoBehaviour
     {
-        skillPointBoard.SetActive(false);
-        SkillBoard = false;
-        InventoryBoard = false;
-    }
-    void Update()
-    {
-        skillpointsText.GetComponent<Text>().text=""+skillpoints.ToString("f0");
-        if (Input.GetKeyDown(KeyCode.X))
+        public static int skillpoints;
+        public Text skillpointsText;
+        public GameObject skillPointBoard;
+        private bool SkillBoard;
+
+        public GameObject inventoryBoard;
+        private bool InventoryBoard;
+
+
+        private void Start()
         {
-            SkillBoard = !SkillBoard;
-            if (!SkillBoard)
+            skillPointBoard.SetActive(false);
+            SkillBoard = false;
+            InventoryBoard = false;
+        }
+        void Update()
+        {
+            skillpointsText.GetComponent<Text>().text=""+skillpoints.ToString("f0");
+            if (Input.GetKeyDown(KeyCode.X))
             {
-                Time.timeScale = 1;
-                skillPointBoard.SetActive(false);
+                SkillBoard = !SkillBoard;
+                if (!SkillBoard)
+                {
+                    Time.timeScale = 1;
+                    skillPointBoard.SetActive(false);
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                    skillPointBoard.SetActive(true);
+                }
             }
-            else
+            if (Input.GetKeyDown(KeyCode.I))
             {
-                Time.timeScale = 0;
-                skillPointBoard.SetActive(true);
+                InventoryBoard = !InventoryBoard;
+                if (!InventoryBoard)
+                {
+                    inventoryBoard.SetActive(false);
+                }
+                else
+                {
+                    inventoryBoard.SetActive(true);
+                }
             }
         }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InventoryBoard = !InventoryBoard;
-            if (!InventoryBoard)
-            {
-                inventoryBoard.SetActive(false);
-            }
-            else
-            {
-                inventoryBoard.SetActive(true);
-            }
-        }
-    }
 
-    public void SkillPointToHP()
-    {
-        if (skillpoints > 0)
+        public void SkillPointToHP()
         {
-            skillpoints--;
-            PlayerUI.WholeHP += 15;
+            return;
+            //if (skillpoints > 0)
+            //{
+            //    skillpoints--;
+            //    PlayerUI.WholeHP += 15;
+            //}
         }
-    }
-    public void SkillPointToMana()
-    {
-        if (skillpoints > 0)
+        public void SkillPointToMana()
         {
-            skillpoints--;
-            PlayerUI.WholeMana += 15;
+            return;
+            //if (skillpoints > 0)
+            //{
+            //    skillpoints--;
+            //    PlayerUI.WholeMana += 15;
+            //}
         }
     }
 }

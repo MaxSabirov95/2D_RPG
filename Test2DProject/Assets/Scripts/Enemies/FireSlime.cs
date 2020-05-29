@@ -2,68 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireSlime : Enemy
+namespace Max_Almog.MyCompany.MyGame
 {
-    public float SlimeJump;
-    private bool isGrounded;
-    private float JumpCoolDown;
-    public Animator fireSlimeAnimator;
-
-    private bool movingRight;
-    public Transform groundDetection;
-
-    void Start()
+    public class FireSlime : Enemy
     {
-        StartProperties();
-        JumpCoolDown = Random.Range(2,5);
-    }
+        public float SlimeJump;
+        private bool isGrounded;
+        private float JumpCoolDown;
+        public Animator fireSlimeAnimator;
 
-    void Update()
-    {
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down);
+        private bool movingRight;
+        public Transform groundDetection;
 
-        if (groundInfo.collider == false)
+        void Start()
         {
-            if (movingRight == true)
+            StartProperties();
+            JumpCoolDown = Random.Range(2,5);
+        }
+
+        void Update()
+        {
+            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down);
+
+            if (groundInfo.collider == false)
             {
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                HPText.rectTransform.localScale = new Vector3(-1f, 1f, 1f);
-                movingRight = false;
+                if (movingRight == true)
+                {
+                    transform.eulerAngles = new Vector3(0, -180, 0);
+                    HPText.rectTransform.localScale = new Vector3(-1f, 1f, 1f);
+                    movingRight = false;
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    HPText.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+                    movingRight = true;
+                }
             }
-            else
+            JumpCoolDown -= Time.deltaTime;
+            if ((JumpCoolDown<=0))
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                HPText.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-                movingRight = true;
+                Jump();
+                JumpCoolDown = Random.Range(2, 5); ;
             }
         }
-        JumpCoolDown -= Time.deltaTime;
-        if ((JumpCoolDown<=0))
-        {
-            Jump();
-            JumpCoolDown = Random.Range(2, 5); ;
-        }
-    }
 
-    void Jump()
-    {
-        rb.AddForce(transform.up * SlimeJump + -transform.right * SlimeJump, ForceMode2D.Impulse);
-    }
+        void Jump()
+        {
+            rb.AddForce(transform.up * SlimeJump + -transform.right * SlimeJump, ForceMode2D.Impulse);
+        }
     
-    private void OnCollisionStay2D(Collision2D Enemy)
-    {
-        if (Enemy.gameObject.CompareTag("Ground"))
+        private void OnCollisionStay2D(Collision2D Enemy)
         {
-            isGrounded = true;
-            fireSlimeAnimator.SetBool("Jump", false);
+            if (Enemy.gameObject.CompareTag("Ground"))
+            {
+                isGrounded = true;
+                fireSlimeAnimator.SetBool("Jump", false);
+            }
         }
-    }
-    private void OnCollisionExit2D(Collision2D Enemy)
-    {
-        if (Enemy.gameObject.CompareTag("Ground"))
+        private void OnCollisionExit2D(Collision2D Enemy)
         {
-            isGrounded = false;
-            fireSlimeAnimator.SetBool("Jump", true);
+            if (Enemy.gameObject.CompareTag("Ground"))
+            {
+                isGrounded = false;
+                fireSlimeAnimator.SetBool("Jump", true);
+            }
         }
     }
 }

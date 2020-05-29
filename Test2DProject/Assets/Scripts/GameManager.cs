@@ -10,7 +10,7 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-namespace Com.MyCompany.MyGame
+namespace Max_Almog.MyCompany.MyGame
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
@@ -27,9 +27,13 @@ namespace Com.MyCompany.MyGame
             SceneManager.LoadScene(0);
         }
 
-
         #endregion
 
+        #region Public Fields
+
+        public static GameManager instance;
+
+        #endregion
 
         #region Public Methods
 
@@ -39,6 +43,14 @@ namespace Com.MyCompany.MyGame
             PhotonNetwork.LeaveRoom();
         }
 
+        #endregion
+
+        #region Monobehaviour Callbacks
+
+        private void Start()
+        {
+            instance = this;
+        }
 
         #endregion
 
@@ -52,7 +64,7 @@ namespace Com.MyCompany.MyGame
                 Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
             }
             Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+            PhotonNetwork.LoadLevel("Game Arena");
         }
 
 
