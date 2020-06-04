@@ -36,15 +36,15 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 return;
             }
-            HPText.GetComponent<Text>().text = "" + HP.ToString("f0");
-            ManaText.GetComponent<Text>().text = "" + Mana.ToString("f0");
-            XPText.GetComponent <Text>().text = "" + XP.ToString("f0");
-            LevelText.GetComponent<Text>().text = "" + Level.ToString("f0");
-            WholeHPText.GetComponent<Text>().text = "" + WholeHP.ToString("f0");
-            WholeManaText.GetComponent<Text>().text = "" + WholeMana.ToString("f0");
-            WholeXPText.GetComponent<Text>().text = "" + WholeXP.ToString("f0");
-            LevelText.GetComponent<Text>().text = "" + Level.ToString("f0");
-            superAttackTimerText.GetComponent<Text>().text = "" + superAttackTimer.ToString("f0");
+            //HPText.GetComponent<Text>().text = "" + HP.ToString("f0");
+            //ManaText.GetComponent<Text>().text = "" + Mana.ToString("f0");
+            //XPText.GetComponent <Text>().text = "" + XP.ToString("f0");
+            //LevelText.GetComponent<Text>().text = "" + Level.ToString("f0");
+            //WholeHPText.GetComponent<Text>().text = "" + WholeHP.ToString("f0");
+            //WholeManaText.GetComponent<Text>().text = "" + WholeMana.ToString("f0");
+            //WholeXPText.GetComponent<Text>().text = "" + WholeXP.ToString("f0");
+            //LevelText.GetComponent<Text>().text = "" + Level.ToString("f0");
+            //superAttackTimerText.GetComponent<Text>().text = "" + superAttackTimer.ToString("f0");
 
             if (HP <= 0)
             {
