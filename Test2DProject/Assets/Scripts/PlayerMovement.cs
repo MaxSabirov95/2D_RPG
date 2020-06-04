@@ -12,7 +12,6 @@ namespace Max_Almog.MyCompany.MyGame
         public LayerMask Enemy;
         public Transform attackPos;
         public Animator playerAnimator;
-        private PhotonView pv;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -56,6 +55,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         private void Awake()
         {
+            
             // #Important
             // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
             if (photonView.IsMine)
@@ -70,7 +70,6 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
-            pv = GetComponent<PhotonView>();
             if (photonView.IsMine)
             {
                 MultiplayerCam.followCamera.Follow = transform;
@@ -163,6 +162,7 @@ void OnLevelWasLoaded(int level)
         {
             rb.AddForce(transform.up * playerJump, ForceMode2D.Impulse);
         }
+
         void FlipPlayer()
         {
             if (Input.GetAxis("Horizontal") < 0)
@@ -174,6 +174,7 @@ void OnLevelWasLoaded(int level)
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
+
         void Attack()
         {
             PlayerDamage = playerAttackDamage;
@@ -193,6 +194,7 @@ void OnLevelWasLoaded(int level)
                 timeBTWAttack = startTimeBTWAtck;
             }
         }
+
         void SuperAttack()
         {
             PlayerDamage = playerAttackDamage;
@@ -212,6 +214,7 @@ void OnLevelWasLoaded(int level)
                 }
             }
         }
+
         void AttackAnimation()
         {
             if (isGrounded)
