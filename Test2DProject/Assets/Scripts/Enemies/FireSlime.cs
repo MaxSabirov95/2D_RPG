@@ -7,7 +7,7 @@ using Photon.Realtime;
 
 namespace Max_Almog.MyCompany.MyGame
 {
-    public class FireSlime : Enemy
+    public class FireSlime : Enemy, IPunObservable
     {
         public float SlimeJump;
         private bool isGrounded;
@@ -16,6 +16,24 @@ namespace Max_Almog.MyCompany.MyGame
 
         private bool movingRight;
         public Transform groundDetection;
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                // We own this player: send the others our data
+                stream.SendNext(playerUI.HP);
+                stream.SendNext(isAttacking);
+                stream.SendNext(isSuperAttacking);
+            }
+            else
+            {
+                // Network player, receive data
+                playerUI.HP = (float)stream.ReceiveNext();
+                isAttacking = (bool)stream.ReceiveNext();
+                isSuperAttacking = (bool)stream.ReceiveNext();
+            }
+        }
 
         void Start()
         {
