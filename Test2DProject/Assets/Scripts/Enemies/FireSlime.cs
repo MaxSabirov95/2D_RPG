@@ -21,17 +21,11 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (stream.IsWriting)
             {
-                // We own this player: send the others our data
-                stream.SendNext(playerUI.HP);
-                stream.SendNext(isAttacking);
-                stream.SendNext(isSuperAttacking);
+                stream.SendNext(transform.position);
             }
             else
             {
-                // Network player, receive data
-                playerUI.HP = (float)stream.ReceiveNext();
-                isAttacking = (bool)stream.ReceiveNext();
-                isSuperAttacking = (bool)stream.ReceiveNext();
+                transform.position = (Vector3)stream.ReceiveNext();
             }
         }
 

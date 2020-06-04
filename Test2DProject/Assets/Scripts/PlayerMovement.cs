@@ -119,21 +119,20 @@ void OnLevelWasLoaded(int level)
             {
                 return;
             }
-            //if (!pv.IsMine)
-            //{
-            //    return;
-            //}
+
             if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
             {
                 Jump();
             }
+
             if (timeBTWAttack <= 0)
             {
                 if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
                 {
-                    isAttacking = true;
-                    Attack();
-                    isAttacking = false;
+                    //isAttacking = true;
+                    playerAnimator.SetTrigger("Attack");
+                    //Attack();
+                    //isAttacking = false;
                 }
             }
             else
@@ -144,10 +143,11 @@ void OnLevelWasLoaded(int level)
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift)&&isGrounded)
                 {
-                    isSuperAttacking = true;
-                    SuperAttack();
-                    playerUI.superAttackTimer = 15;
-                    isSuperAttacking = false;
+                    //isSuperAttacking = true;
+                    playerAnimator.SetTrigger("SuperAttack");
+                    //SuperAttack();
+                    //playerUI.superAttackTimer = 15;
+                    //isSuperAttacking = false;
                 }
             }
             FlipPlayer();
@@ -181,45 +181,45 @@ void OnLevelWasLoaded(int level)
             }
         }
 
-        void Attack()
-        {
-            PlayerDamage = playerAttackDamage;
-            if (isGrounded)
-            {
-                if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
-                {
-                    playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
-                    playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("Attack");
-                }
-                else if (playerUI.HP > minusManaAfterAttack)
-                {
-                    playerUI.Mana -= minusManaAfterAttack;
-                    playerAnimator.SetTrigger("Attack");
-                }
-                timeBTWAttack = startTimeBTWAtck;
-            }
-        }
+        //void Attack()
+        //{
+        //    PlayerDamage = playerAttackDamage;
+        //    if (isGrounded)
+        //    {
+        //        if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
+        //        {
+        //            playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
+        //            playerUI.Mana = 0;
+        //            playerAnimator.SetTrigger("Attack");
+        //        }
+        //        else if (playerUI.HP > minusManaAfterAttack)
+        //        {
+        //            playerUI.Mana -= minusManaAfterAttack;
+        //            playerAnimator.SetTrigger("Attack");
+        //        }
+        //        timeBTWAttack = startTimeBTWAtck;
+        //    }
+        //}
 
-        void SuperAttack()
-        {
-            PlayerDamage = playerAttackDamage;
-            PlayerDamage *= 2;
-            if (isGrounded)
-            {
-                if ((playerUI.Mana < minusManaAfterSuperAttack) && (playerUI.HP > minusManaAfterSuperAttack))
-                {
-                    playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
-                    playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("SuperAttack");
-                }
-                else if (playerUI.HP > minusManaAfterSuperAttack)
-                {
-                    playerUI.Mana -= minusManaAfterSuperAttack;
-                    playerAnimator.SetTrigger("SuperAttack");
-                }
-            }
-        }
+        //void SuperAttack()
+        //{
+        //    PlayerDamage = playerAttackDamage;
+        //    PlayerDamage *= 2;
+        //    if (isGrounded)
+        //    {
+        //        if ((playerUI.Mana < minusManaAfterSuperAttack) && (playerUI.HP > minusManaAfterSuperAttack))
+        //        {
+        //            playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
+        //            playerUI.Mana = 0;
+        //            playerAnimator.SetTrigger("SuperAttack");
+        //        }
+        //        else if (playerUI.HP > minusManaAfterSuperAttack)
+        //        {
+        //            playerUI.Mana -= minusManaAfterSuperAttack;
+        //            playerAnimator.SetTrigger("SuperAttack");
+        //        }
+        //    }
+        //}
 
         void AttackAnimation()
         {
