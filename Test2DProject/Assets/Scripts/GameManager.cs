@@ -99,7 +99,7 @@ namespace Max_Almog.MyCompany.MyGame
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
 
-                LoadArena();
+                //LoadArena();
             }
         }
 
@@ -114,7 +114,7 @@ namespace Max_Almog.MyCompany.MyGame
                 Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
 
-                LoadArena();
+                //LoadArena();
             }
         }
 
