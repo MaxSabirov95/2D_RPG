@@ -26,6 +26,8 @@ namespace Max_Almog.MyCompany.MyGame
         public int minusManaAfterSuperAttack;
         private float timeBTWAttack;
         private bool isGrounded;
+        private bool isAttacking = false;
+        private bool isSuperAttacking = false;
         private Rigidbody2D rb;
         private PlayerUI playerUI;
 
@@ -38,15 +40,15 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 // We own this player: send the others our data
                 stream.SendNext(playerUI.HP);
-                stream.SendNext(Input.GetKeyDown(KeyCode.LeftControl) && isGrounded);
-                stream.SendNext(playerUI.superAttackTimer <= 0 && Input.GetKeyDown(KeyCode.LeftShift) && isGrounded);
+                stream.SendNext(isAttacking);
+                stream.SendNext(isSuperAttacking);
             }
             else
             {
                 // Network player, receive data
                 playerUI.HP = (float)stream.ReceiveNext();
-                bool isAttacking = (bool)stream.ReceiveNext();
-                bool isSuperAttacking = (bool)stream.ReceiveNext();
+                isAttacking = (bool)stream.ReceiveNext();
+                isSuperAttacking = (bool)stream.ReceiveNext();
             }
         }
 
@@ -129,7 +131,9 @@ void OnLevelWasLoaded(int level)
             {
                 if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
                 {
+                    isAttacking = true;
                     Attack();
+                    isAttacking = false;
                 }
             }
             else
@@ -140,8 +144,10 @@ void OnLevelWasLoaded(int level)
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift)&&isGrounded)
                 {
+                    isSuperAttacking = true;
                     SuperAttack();
                     playerUI.superAttackTimer = 15;
+                    isSuperAttacking = false;
                 }
             }
             FlipPlayer();
