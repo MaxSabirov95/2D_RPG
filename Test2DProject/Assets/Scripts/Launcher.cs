@@ -132,7 +132,7 @@ namespace Max_Almog.MyCompany.MyGame
         public override void OnJoinedRoom()
         {
             // #Critical: We only load if we are the first player, else we rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
-            if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            if (/*PhotonNetwork.CurrentRoom.PlayerCount == 1*/ PhotonNetwork.IsMasterClient)
             {
                 Debug.Log("We load the 'Game Arena'");
 
