@@ -7,13 +7,11 @@ namespace Max_Almog.MyCompany.MyGame
 {
     public class MultiplayerCam : MonoBehaviour
     {
-        CinemachineVirtualCamera thisCamera;
+        public static CinemachineVirtualCamera followCamera;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-            thisCamera = GetComponent<CinemachineVirtualCamera>();
-            thisCamera.Follow = PlayerMovement.LocalPlayerInstance.transform;
+            followCamera = GetComponent<CinemachineVirtualCamera>();
         }
     }
 }

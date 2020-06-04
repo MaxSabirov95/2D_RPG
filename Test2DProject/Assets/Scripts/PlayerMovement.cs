@@ -64,6 +64,10 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
+            if (photonView.IsMine)
+            {
+                MultiplayerCam.followCamera.Follow = transform;
+            }
             timeBTWAttack = startTimeBTWAtck;
             rb = GetComponent<Rigidbody2D>();
             PlayerDamage = playerAttackDamage;
