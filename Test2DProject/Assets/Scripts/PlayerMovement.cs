@@ -38,11 +38,15 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 // We own this player: send the others our data
                 stream.SendNext(playerUI.HP);
+                stream.SendNext(Input.GetKeyDown(KeyCode.LeftControl) && isGrounded);
+                stream.SendNext(playerUI.superAttackTimer <= 0 && Input.GetKeyDown(KeyCode.LeftShift) && isGrounded);
             }
             else
             {
                 // Network player, receive data
                 playerUI.HP = (float)stream.ReceiveNext();
+                bool isAttacking = (bool)stream.ReceiveNext();
+                bool isSuperAttacking = (bool)stream.ReceiveNext();
             }
         }
 

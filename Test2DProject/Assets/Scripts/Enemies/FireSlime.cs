@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.EventSystems;
+using Photon.Realtime;
 
 namespace Max_Almog.MyCompany.MyGame
 {
