@@ -103,7 +103,7 @@ void OnLevelWasLoaded(int level)
 
         void Update()
         {
-            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            if (!photonView.IsMine)
             {
                 return;
             }
