@@ -39,11 +39,15 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 // We own this player: send the others our data
                 stream.SendNext(playerUI.HP);
+                stream.SendNext(Input.GetKeyDown(KeyCode.LeftControl) && isGrounded);
+                stream.SendNext(playerUI.superAttackTimer <= 0 && Input.GetKeyDown(KeyCode.LeftShift) && isGrounded);
             }
             else
             {
                 // Network player, receive data
                 playerUI.HP = (float)stream.ReceiveNext();
+                bool isAttacking = (bool)stream.ReceiveNext();
+                bool isSuperAttacking = (bool)stream.ReceiveNext();
             }
         }
 
@@ -61,6 +65,7 @@ namespace Max_Almog.MyCompany.MyGame
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
             DontDestroyOnLoad(this.gameObject);
+            playerUI = GetComponent<PlayerUI>();
         }
 
         void Start()
@@ -73,7 +78,7 @@ namespace Max_Almog.MyCompany.MyGame
             timeBTWAttack = startTimeBTWAtck;
             rb = GetComponent<Rigidbody2D>();
             PlayerDamage = playerAttackDamage;
-            playerUI = GetComponent<PlayerUI>();
+            
 #if UNITY_5_4_OR_NEWER
             // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -109,14 +114,14 @@ void OnLevelWasLoaded(int level)
 
         void Update()
         {
-            //if (!photonView.IsMine)
-            //{
-            //    return;
-            //}
-            if (pv.IsMine)
+            if (!photonView.IsMine)
             {
                 return;
             }
+            //if (!pv.IsMine)
+            //{
+            //    return;
+            //}
             if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
             {
                 Jump();
@@ -145,6 +150,10 @@ void OnLevelWasLoaded(int level)
 
         private void FixedUpdate()
         {
+            if (!photonView.IsMine)
+            {
+                return;
+            }
             float horizontalMove = Input.GetAxis("Horizontal") * playerSpeed;
             rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
             playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
