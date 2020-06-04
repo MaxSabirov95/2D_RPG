@@ -12,6 +12,7 @@ namespace Max_Almog.MyCompany.MyGame
         public LayerMask Enemy;
         public Transform attackPos;
         public Animator playerAnimator;
+        private PhotonView pv;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -64,6 +65,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
+            pv = GetComponent<PhotonView>();
             if (photonView.IsMine)
             {
                 MultiplayerCam.followCamera.Follow = transform;
@@ -107,7 +109,11 @@ void OnLevelWasLoaded(int level)
 
         void Update()
         {
-            if (!photonView.IsMine)
+            //if (!photonView.IsMine)
+            //{
+            //    return;
+            //}
+            if (pv.IsMine)
             {
                 return;
             }
