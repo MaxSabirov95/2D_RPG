@@ -122,17 +122,16 @@ void OnLevelWasLoaded(int level)
 
             if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
             {
-                Jump();
+                photonView.RPC("Jump", RpcTarget.All);
             }
 
             if (timeBTWAttack <= 0)
             {
                 if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
                 {
-                    //isAttacking = true;
-                    playerAnimator.SetBool("Attack", true);
-                    //Attack();
-                    //isAttacking = false;
+                    isAttacking = true;
+                    photonView.RPC("Attack", RpcTarget.All);
+                    isAttacking = false;
                 }
             }
             else
@@ -149,7 +148,7 @@ void OnLevelWasLoaded(int level)
                     isSuperAttacking = false;
                 }
             }
-            FlipPlayer();
+            photonView.RPC("FlipPlayer", RpcTarget.All);
         }
 
         private void FixedUpdate()
@@ -158,6 +157,12 @@ void OnLevelWasLoaded(int level)
             {
                 return;
             }
+            photonView.RPC("Move", RpcTarget.All);
+        }
+
+        [PunRPC]
+        private void Move()
+        {
             float horizontalMove = Input.GetAxis("Horizontal") * playerSpeed;
             rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
             playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -169,6 +174,7 @@ void OnLevelWasLoaded(int level)
             rb.AddForce(transform.up * playerJump, ForceMode2D.Impulse);
         }
 
+        [PunRPC]
         void FlipPlayer()
         {
             if (Input.GetAxis("Horizontal") < 0)
