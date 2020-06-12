@@ -82,6 +82,10 @@ namespace Max_Almog.MyCompany.MyGame
         {
             HP -= EnemyDamage;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+            if (HP <= 0)
+            {
+                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+            }
         }
 
         [PunRPC]
