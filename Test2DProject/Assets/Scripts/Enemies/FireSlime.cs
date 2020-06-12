@@ -31,8 +31,8 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
-            StartProperties();
-            JumpCoolDown = Random.Range(2,5);
+            photonView.RPC("StartProperties", RpcTarget.AllBuffered);
+            JumpCoolDown = Random.Range(2, 5);
         }
 
         void Update()
@@ -55,7 +55,7 @@ namespace Max_Almog.MyCompany.MyGame
                 }
             }
             JumpCoolDown -= Time.deltaTime;
-            if ((JumpCoolDown<=0))
+            if ((JumpCoolDown <= 0))
             {
                 photonView.RPC("Jump", RpcTarget.All);
             }
@@ -65,7 +65,7 @@ namespace Max_Almog.MyCompany.MyGame
         void Jump()
         {
             rb.AddForce(transform.up * SlimeJump + -transform.right * SlimeJump, ForceMode2D.Impulse);
-            JumpCoolDown = Random.Range(2, 5);
+            JumpCoolDown = Random.Range(2, 5); ;
         }
     
         private void OnCollisionStay2D(Collision2D Enemy)
