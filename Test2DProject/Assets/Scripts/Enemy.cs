@@ -102,7 +102,7 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
 
         void DropItems()

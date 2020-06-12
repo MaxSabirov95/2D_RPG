@@ -44,6 +44,7 @@ MonoBehaviour:
   - EnemyTakeDamage
   - StartProperties
   - enemylife
+  - OnDeath
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
