@@ -36,6 +36,14 @@ namespace Max_Almog.MyCompany.MyGame
 
         public GameObject[] itemstodrop;
 
+        public void Awake()
+        {
+            if (HP <= 0)
+            {
+                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+            }
+        }
+
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
@@ -49,7 +57,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        public void Update()
+        private void Update()
         {
             if (HP <= 0)
             {
