@@ -300,9 +300,6 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Damage
-  - Type: 9
-    SynchronizeType: 1
-    Name: SuperAttack
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

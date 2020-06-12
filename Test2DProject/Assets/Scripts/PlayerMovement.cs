@@ -130,7 +130,7 @@ void OnLevelWasLoaded(int level)
                 if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
                 {
                     //isAttacking = true;
-                    playerAnimator.SetTrigger("Attack");
+                    playerAnimator.SetBool("Attack", true);
                     //Attack();
                     //isAttacking = false;
                 }
@@ -144,7 +144,7 @@ void OnLevelWasLoaded(int level)
                 if (Input.GetKeyDown(KeyCode.LeftShift)&&isGrounded)
                 {
                     //isSuperAttacking = true;
-                    playerAnimator.SetTrigger("SuperAttack");
+                    playerAnimator.SetBool("Super Attack", true);
                     //SuperAttack();
                     //playerUI.superAttackTimer = 15;
                     //isSuperAttacking = false;
@@ -250,7 +250,7 @@ void OnLevelWasLoaded(int level)
 
             if (player.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                playerAnimator.SetTrigger("Damage");
+                playerAnimator.SetBool("Damage", true);
             }
         }
         private void OnTriggerExit2D(Collider2D player)
@@ -266,7 +266,7 @@ void OnLevelWasLoaded(int level)
         {
             if (player.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                playerAnimator.SetTrigger("Damage");
+                playerAnimator.SetBool("Damage", true);
             }
         }
 
