@@ -31,7 +31,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
-            StartProperties();
+            photonView.RPC("StartProperties", RpcTarget.AllBuffered);
             JumpCoolDown = Random.Range(2,5);
         }
 

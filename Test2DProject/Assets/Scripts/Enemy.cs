@@ -33,6 +33,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         public GameObject[] itemstodrop;
 
+        [PunRPC]
         public void StartProperties()
         {
             MinCoins = MinGiveCoinsAfterDeath;
@@ -47,7 +48,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         public void TakeDamge(int EnemyDamge, PlayerUI damagingPlayer)
         {
-            photonView.RPC("EnemyTakeDamage", RpcTarget.All, new object[] { EnemyDamge, damagingPlayer });
+            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBuffered, new object[] { EnemyDamge, damagingPlayer });
         }
 
         [PunRPC]

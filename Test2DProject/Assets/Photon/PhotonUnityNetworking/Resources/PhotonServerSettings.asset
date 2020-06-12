@@ -41,6 +41,8 @@ MonoBehaviour:
   - Jump
   - FlipPlayer
   - Move
+  - EnemyTakeDamage
+  - StartProperties
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
