@@ -36,11 +36,11 @@ namespace Max_Almog.MyCompany.MyGame
 
         public GameObject[] itemstodrop;
 
-        public void Awake()
+        public void Start()
         {
             if (HP <= 0)
             {
-                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+                Destroy(gameObject);
             }
         }
 
@@ -54,14 +54,6 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
-            }
-        }
-
-        private void Update()
-        {
-            if (HP <= 0)
-            {
-                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
             }
         }
 
