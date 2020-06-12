@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypesOfEnemies: 0
-  rb: {fileID: 0}
+  rb: {fileID: 2490611554650955017}
   HPText: {fileID: 2490611553197207204}
   HP: 25
   GiveXP: 25

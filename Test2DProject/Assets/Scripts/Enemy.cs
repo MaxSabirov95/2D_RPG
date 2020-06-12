@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
 //  Items:
 //  0-Coins
@@ -12,7 +13,7 @@ using TMPro;
 
 namespace Max_Almog.MyCompany.MyGame
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviourPun
     {
         public enum enemytypes { FireSlime, Enemy1, Enemy2 };
         public enemytypes TypesOfEnemies;

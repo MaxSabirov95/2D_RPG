@@ -148,7 +148,7 @@ void OnLevelWasLoaded(int level)
                     isSuperAttacking = false;
                 }
             }
-            photonView.RPC("FlipPlayer", RpcTarget.All);
+            FlipPlayer();
         }
 
         private void FixedUpdate()
@@ -157,10 +157,9 @@ void OnLevelWasLoaded(int level)
             {
                 return;
             }
-            photonView.RPC("Move", RpcTarget.All);
+            Move();
         }
 
-        [PunRPC]
         private void Move()
         {
             float horizontalMove = Input.GetAxis("Horizontal") * playerSpeed;
@@ -174,7 +173,6 @@ void OnLevelWasLoaded(int level)
             rb.AddForce(transform.up * playerJump, ForceMode2D.Impulse);
         }
 
-        [PunRPC]
         void FlipPlayer()
         {
             if (Input.GetAxis("Horizontal") < 0)
