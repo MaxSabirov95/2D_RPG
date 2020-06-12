@@ -45,6 +45,12 @@ namespace Max_Almog.MyCompany.MyGame
             rb = GetComponent<Rigidbody2D>();
         }
 
+        public void TakeDamge(int EnemyDamge, PlayerUI damagingPlayer)
+        {
+            photonView.RPC("EnemyTakeDamage", RpcTarget.All, new object[] { EnemyDamge, damagingPlayer });
+        }
+
+        [PunRPC]
         public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
         {
             HP -= EnemyDamage;
