@@ -17,9 +17,8 @@ namespace Max_Almog.MyCompany.MyGame
         private bool movingRight;
         public Transform groundDetection;
 
-        new void Start()
+        void Start()
         {
-            base.Start();
             photonView.RPC("StartProperties", RpcTarget.AllBuffered);
             JumpCoolDown = Random.Range(2, 5);
         }

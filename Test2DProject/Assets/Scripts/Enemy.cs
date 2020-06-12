@@ -34,26 +34,26 @@ namespace Max_Almog.MyCompany.MyGame
         public static int MinCoins;
         public static int MaxCoins;
 
-        public GameObject[] itemstodrop;
+        public bool isDead;
 
-        public void Start()
-        {
-            if (HP <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
+        public GameObject[] itemstodrop;
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
             {
                 stream.SendNext(HP);
+                stream.SendNext(isDead);
             }
             else
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+                isDead = (bool)stream.ReceiveNext();
+                if (isDead)
+                {
+                    OnDeath();
+                }
             }
         }
 
@@ -85,6 +85,7 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+                isDead = true;
             }
         }
 
