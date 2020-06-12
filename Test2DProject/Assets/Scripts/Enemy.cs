@@ -102,7 +102,8 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
+            photonView.RPC("PhotonNetwork.Destroy", RpcTarget.All);
         }
 
         void DropItems()
