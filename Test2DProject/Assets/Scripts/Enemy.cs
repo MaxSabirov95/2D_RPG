@@ -84,7 +84,7 @@ namespace Max_Almog.MyCompany.MyGame
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
-                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+                photonView.RPC("OnDeath", RpcTarget.MasterClient);
                 isDead = true;
             }
         }
@@ -102,8 +102,7 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            PhotonNetwork.Destroy(gameObject);
-            photonView.RPC("PhotonNetwork.Destroy", RpcTarget.All);
+            Destroy(gameObject);
         }
 
         void DropItems()
