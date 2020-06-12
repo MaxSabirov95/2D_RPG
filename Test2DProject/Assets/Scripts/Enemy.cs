@@ -49,11 +49,7 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
-                isDead = (bool)stream.ReceiveNext();
-                if (isDead)
-                {
-                    photonView.RPC("OnDeath", RpcTarget.MasterClient);
-                }
+                //isDead = (bool)stream.ReceiveNext();
             }
         }
 
@@ -71,6 +67,14 @@ namespace Max_Almog.MyCompany.MyGame
             
         }
 
+        private void Update()
+        {
+            if (isDead)
+            {
+                photonView.RPC("OnDeath", RpcTarget.MasterClient);
+            }
+        }
+
         public void TakeDamage(int EnemyDamge, PlayerUI damagingPlayer)
         {
             this.damagingPlayer = damagingPlayer;
@@ -82,16 +86,19 @@ namespace Max_Almog.MyCompany.MyGame
         {
             HP -= EnemyDamage;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+            
             if (HP <= 0)
             {
                 photonView.RPC("OnDeath", RpcTarget.MasterClient);
                 isDead = true;
+                //gameObject.SetActive(false);
             }
         }
 
         [PunRPC]
         public void OnDeath()
         {
+            gameObject.SetActive(false);
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
@@ -102,7 +109,6 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            Destroy(gameObject);
         }
 
         void DropItems()
