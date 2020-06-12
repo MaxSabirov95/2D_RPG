@@ -76,10 +76,11 @@ namespace Max_Almog.MyCompany.MyGame
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
-                OnDeath();
+                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
             }
         }
 
+        [PunRPC]
         public void OnDeath()
         {
             switch (TypesOfEnemies)
