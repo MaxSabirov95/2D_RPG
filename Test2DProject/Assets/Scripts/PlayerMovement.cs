@@ -68,6 +68,7 @@ namespace Max_Almog.MyCompany.MyGame
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
             DontDestroyOnLoad(this.gameObject);
             playerUI = GetComponent<PlayerUI>();
+            rb = GetComponent<Rigidbody2D>();
         }
 
         void Start()
@@ -77,7 +78,7 @@ namespace Max_Almog.MyCompany.MyGame
                 MultiplayerCam.followCamera.Follow = transform;
             }
             timeBTWAttack = startTimeBTWAtck;
-            rb = GetComponent<Rigidbody2D>();
+            
             PlayerDamage = playerAttackDamage;
             
 #if UNITY_5_4_OR_NEWER
@@ -119,7 +120,7 @@ void OnLevelWasLoaded(int level)
             {
                 return;
             }
-
+            
             if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
             {
                 photonView.RPC("Jump", RpcTarget.All);
@@ -159,7 +160,7 @@ void OnLevelWasLoaded(int level)
             }
             Move();
         }
-
+        
         private void Move()
         {
             float horizontalMove = Input.GetAxis("Horizontal") * playerSpeed;
@@ -172,7 +173,7 @@ void OnLevelWasLoaded(int level)
         {
             rb.AddForce(transform.up * playerJump, ForceMode2D.Impulse);
         }
-
+        
         void FlipPlayer()
         {
             if (Input.GetAxis("Horizontal") < 0)
