@@ -43,6 +43,7 @@ MonoBehaviour:
   - Move
   - EnemyTakeDamage
   - StartProperties
+  - enemylife
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
