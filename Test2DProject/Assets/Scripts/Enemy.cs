@@ -52,7 +52,7 @@ namespace Max_Almog.MyCompany.MyGame
                 isDead = (bool)stream.ReceiveNext();
                 if (isDead)
                 {
-                    OnDeath();
+                    photonView.RPC("OnDeath", RpcTarget.MasterClient);
                 }
             }
         }
