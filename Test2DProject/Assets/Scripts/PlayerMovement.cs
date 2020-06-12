@@ -213,12 +213,12 @@ void OnLevelWasLoaded(int level)
                 {
                     playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
                     playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("SuperAttack");
+                    playerAnimator.SetBool("Super Attack",true);
                 }
                 else if (playerUI.HP > minusManaAfterSuperAttack)
                 {
                     playerUI.Mana -= minusManaAfterSuperAttack;
-                    playerAnimator.SetTrigger("SuperAttack");
+                    playerAnimator.SetBool("Super Attack", true);
                 }
             }
         }
