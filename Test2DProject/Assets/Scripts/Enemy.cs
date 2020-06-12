@@ -45,13 +45,13 @@ namespace Max_Almog.MyCompany.MyGame
             rb = GetComponent<Rigidbody2D>();
         }
 
-        public void TakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
+        public void TakeDamge(int EnemyDamge, PlayerUI damagingPlayer)
         {
-            photonView.RPC("EnemyTakeDamage", RpcTarget.All, new object[] { EnemyDamage, damagingPlayer });
+            photonView.RPC("EnemyTakeDamage", RpcTarget.All, new object[] { EnemyDamge, damagingPlayer });
         }
 
         [PunRPC]
-        void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
+        public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
         {
             HP -= EnemyDamage;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
@@ -60,7 +60,7 @@ namespace Max_Almog.MyCompany.MyGame
                 OnDeath(damagingPlayer);
             }
         }
-        
+
         public void OnDeath(PlayerUI killingPlayer)
         {
             switch (TypesOfEnemies)

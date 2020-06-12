@@ -235,7 +235,7 @@ void OnLevelWasLoaded(int level)
                 timeBTWAttack = startTimeBTWAtck;
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(PlayerDamage, playerUI);
+                    enemiesToDamage[i].GetComponent<Enemy>().EnemyTakeDamage(PlayerDamage, playerUI);
                 }
             } 
         }
