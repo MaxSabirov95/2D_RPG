@@ -21,7 +21,8 @@ namespace Max_Almog.MyCompany.MyGame
         public Rigidbody2D rb;
         public TMP_Text HPText;
 
-        [PunRPC]
+
+        int enemyHp;
         public int HP;
 
         public int GiveXP;
@@ -39,6 +40,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void StartProperties()
         {
+            photonView.RPC("enemylife", RpcTarget.AllBuffered);
             MinCoins = MinGiveCoinsAfterDeath;
             MaxCoins = MaxGiveCoinsAfterDeath;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
@@ -47,7 +49,13 @@ namespace Max_Almog.MyCompany.MyGame
             Physics2D.IgnoreLayerCollision(11, 10);
 
             rb = GetComponent<Rigidbody2D>();
-            photonView.RPC("HP",RpcTarget.MasterClient);
+            
+        }
+
+        [PunRPC]
+        public void enemylife()
+        {
+            enemyHp = HP;
         }
 
         public void TakeDamge(int EnemyDamge, PlayerUI damagingPlayer)
@@ -58,7 +66,8 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
         {
-            HP -= EnemyDamage; 
+            HP -= EnemyDamage;
+            photonView.RPC("enemylife", RpcTarget.AllBuffered);
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
