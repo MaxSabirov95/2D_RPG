@@ -34,6 +34,8 @@ namespace Max_Almog.MyCompany.MyGame
         public static int MinCoins;
         public static int MaxCoins;
 
+        public bool isDead;
+
         public GameObject[] itemstodrop;
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -41,11 +43,17 @@ namespace Max_Almog.MyCompany.MyGame
             if (stream.IsWriting)
             {
                 stream.SendNext(HP);
+                stream.SendNext(isDead);
             }
             else
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+                isDead = (bool)stream.ReceiveNext();
+                if (isDead)
+                {
+                    OnDeath();
+                }
             }
         }
 
@@ -77,6 +85,7 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+                isDead = true;
             }
         }
 
@@ -93,7 +102,7 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         void DropItems()
