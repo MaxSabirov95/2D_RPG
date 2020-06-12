@@ -20,7 +20,10 @@ namespace Max_Almog.MyCompany.MyGame
 
         public Rigidbody2D rb;
         public TMP_Text HPText;
+
+        [PunRPC]
         public int HP;
+
         public int GiveXP;
         public int DamageToPlayer;
 
@@ -44,6 +47,7 @@ namespace Max_Almog.MyCompany.MyGame
             Physics2D.IgnoreLayerCollision(11, 10);
 
             rb = GetComponent<Rigidbody2D>();
+            photonView.RPC("HP",RpcTarget.MasterClient);
         }
 
         public void TakeDamge(int EnemyDamge, PlayerUI damagingPlayer)
@@ -54,7 +58,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
         {
-            HP -= EnemyDamage;
+            HP -= EnemyDamage; 
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
