@@ -25,9 +25,9 @@ namespace Max_Almog.MyCompany.MyGame
         public int minusManaAfterAttack;
         public int minusManaAfterSuperAttack;
         private float timeBTWAttack;
-        private bool isGrounded;
-        private bool isAttacking = false;
-        private bool isSuperAttacking = false;
+        public bool isGrounded;
+        public bool isAttacking = false;
+        public bool isSuperAttacking = false;
         private Rigidbody2D rb;
         private PlayerUI playerUI;
 
@@ -115,42 +115,37 @@ void OnLevelWasLoaded(int level)
 
         void Update()
         {
-            if (!photonView.IsMine)
+            if (photonView.IsMine)
             {
-                return;
-            }
-            //if (!pv.IsMine)
-            //{
-            //    return;
-            //}
-            if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
-            {
-                Jump();
-            }
-            if (timeBTWAttack <= 0)
-            {
-                if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
+                if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
                 {
-                    isAttacking = true;
-                    Attack();
-                    isAttacking = false;
+                    Jump();
                 }
-            }
-            else
-            {
-                timeBTWAttack -= Time.deltaTime;
-            }
-            if (playerUI.superAttackTimer <= 0)
-            {
-                if (Input.GetKeyDown(KeyCode.LeftShift)&&isGrounded)
+                if (timeBTWAttack <= 0)
                 {
-                    isSuperAttacking = true;
-                    SuperAttack();
-                    playerUI.superAttackTimer = 15;
-                    isSuperAttacking = false;
+                    if (Input.GetButtonDown("Fire1")&&isGrounded)
+                    {
+                        //isAttacking = true;
+                        playerAnimator.SetTrigger("Attack");
+                        //isAttacking = false;
+                    }
                 }
+                else
+                {
+                    timeBTWAttack -= Time.deltaTime;
+                }
+                if (playerUI.superAttackTimer <= 0)
+                {
+                    if (Input.GetButtonDown("Fire3")&&isGrounded)
+                    {
+                        //isSuperAttacking = true;
+                        playerAnimator.SetTrigger("SuperAttack");
+                        //playerUI.superAttackTimer = 15;
+                        //isSuperAttacking = false;
+                    }
+                }
+                FlipPlayer();
             }
-            FlipPlayer();
         }
 
         private void FixedUpdate()
@@ -181,45 +176,45 @@ void OnLevelWasLoaded(int level)
             }
         }
 
-        void Attack()
-        {
-            PlayerDamage = playerAttackDamage;
-            if (isGrounded)
-            {
-                if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
-                {
-                    playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
-                    playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("Attack");
-                }
-                else if (playerUI.HP > minusManaAfterAttack)
-                {
-                    playerUI.Mana -= minusManaAfterAttack;
-                    playerAnimator.SetTrigger("Attack");
-                }
-                timeBTWAttack = startTimeBTWAtck;
-            }
-        }
+        //void Attack()
+        //{
+        //    PlayerDamage = playerAttackDamage;
+        //    //if (isGrounded)
+        //    //{
+        //        if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
+        //        {
+        //            playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
+        //            playerUI.Mana = 0;
+        //            playerAnimator.SetTrigger("Attack");
+        //        }
+        //        else if (playerUI.HP > minusManaAfterAttack)
+        //        {
+        //            playerUI.Mana -= minusManaAfterAttack;
+        //            playerAnimator.SetTrigger("Attack");
+        //        }
+        //        timeBTWAttack = startTimeBTWAtck;
+        //    //}
+        //}
 
-        void SuperAttack()
-        {
-            PlayerDamage = playerAttackDamage;
-            PlayerDamage *= 2;
-            if (isGrounded)
-            {
-                if ((playerUI.Mana < minusManaAfterSuperAttack) && (playerUI.HP > minusManaAfterSuperAttack))
-                {
-                    playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
-                    playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("SuperAttack");
-                }
-                else if (playerUI.HP > minusManaAfterSuperAttack)
-                {
-                    playerUI.Mana -= minusManaAfterSuperAttack;
-                    playerAnimator.SetTrigger("SuperAttack");
-                }
-            }
-        }
+        //void SuperAttack()
+        //{
+        //    PlayerDamage = playerAttackDamage;
+        //    PlayerDamage *= 2;
+        //    if (isGrounded)
+        //    {
+        //        if ((playerUI.Mana < minusManaAfterSuperAttack) && (playerUI.HP > minusManaAfterSuperAttack))
+        //        {
+        //            playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
+        //            playerUI.Mana = 0;
+        //            playerAnimator.SetTrigger("SuperAttack");
+        //        }
+        //        else if (playerUI.HP > minusManaAfterSuperAttack)
+        //        {
+        //            playerUI.Mana -= minusManaAfterSuperAttack;
+        //            playerAnimator.SetTrigger("SuperAttack");
+        //        }
+        //    }
+        //}
 
         void AttackAnimation()
         {

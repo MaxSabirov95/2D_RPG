@@ -146,6 +146,9 @@ MonoBehaviour:
   playerAttackDamage: 10
   minusManaAfterAttack: 10
   minusManaAfterSuperAttack: 25
+  isGrounded: 0
+  isAttacking: 0
+  isSuperAttacking: 0
 --- !u!50 &5170761759005892568
 Rigidbody2D:
   serializedVersion: 4
@@ -296,8 +299,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 6657939569142411524}
-  - {fileID: 5813966485377510905}
   - {fileID: 5170761759005892574}
+  - {fileID: 5813966485377510905}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
