@@ -21,7 +21,7 @@ namespace Max_Almog.MyCompany.MyGame
         public Rigidbody2D rb;
         public TMP_Text HPText;
 
-        public static int HP=25;
+        public int HP;
 
         public int GiveXP;
         public int DamageToPlayer;
