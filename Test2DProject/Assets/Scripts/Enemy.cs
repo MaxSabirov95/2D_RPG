@@ -21,8 +21,7 @@ namespace Max_Almog.MyCompany.MyGame
         public Rigidbody2D rb;
         public TMP_Text HPText;
 
-        int HP;
-        int NormalHP=25;
+        public static int HP=25;
 
         public int GiveXP;
         public int DamageToPlayer;
@@ -42,7 +41,7 @@ namespace Max_Almog.MyCompany.MyGame
             MinCoins = MinGiveCoinsAfterDeath;
             MaxCoins = MaxGiveCoinsAfterDeath;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
-            HP = NormalHP;
+
             Physics2D.IgnoreLayerCollision(11, 11);
             Physics2D.IgnoreLayerCollision(11, 10);
 
@@ -58,9 +57,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
         {
-            NormalHP -= EnemyDamage;
-            //HP -= EnemyDamage;
-            HP = NormalHP;
+            HP -= EnemyDamage;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
