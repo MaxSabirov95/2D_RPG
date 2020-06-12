@@ -13,7 +13,7 @@ using Photon.Pun;
 
 namespace Max_Almog.MyCompany.MyGame
 {
-    public class Enemy : MonoBehaviourPun
+    public class Enemy : MonoBehaviourPun, IPunObservable
     {
         public enum enemytypes { FireSlime, Enemy1, Enemy2 };
         public enemytypes TypesOfEnemies;
@@ -27,6 +27,7 @@ namespace Max_Almog.MyCompany.MyGame
         public int DamageToPlayer;
 
         public PlayerUI goals;
+        public PlayerUI damagingPlayer;
 
         public int MinGiveCoinsAfterDeath;
         public int MaxGiveCoinsAfterDeath;
@@ -34,6 +35,19 @@ namespace Max_Almog.MyCompany.MyGame
         public static int MaxCoins;
 
         public GameObject[] itemstodrop;
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(HP);
+            }
+            else
+            {
+                HP = (int)stream.ReceiveNext();
+                HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+            }
+        }
 
         [PunRPC]
         public void StartProperties()
@@ -51,28 +65,29 @@ namespace Max_Almog.MyCompany.MyGame
 
         public void TakeDamge(int EnemyDamge, PlayerUI damagingPlayer)
         {
-            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBuffered, new object[] { EnemyDamge, damagingPlayer });
+            this.damagingPlayer = damagingPlayer;
+            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBuffered, new object[] { EnemyDamge});
         }
 
         [PunRPC]
-        public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
+        public void EnemyTakeDamage(int EnemyDamage)
         {
             HP -= EnemyDamage;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
-                OnDeath(damagingPlayer);
+                OnDeath();
             }
         }
 
-        public void OnDeath(PlayerUI killingPlayer)
+        public void OnDeath()
         {
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
                     DropItems();
                     //goals.Killquest();
-                    killingPlayer.XP += GiveXP;
+                    damagingPlayer.XP += GiveXP;
                     break;
                 default:
                     break;
