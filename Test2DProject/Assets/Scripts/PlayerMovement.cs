@@ -143,11 +143,10 @@ void OnLevelWasLoaded(int level)
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift)&&isGrounded)
                 {
-                    //isSuperAttacking = true;
-                    playerAnimator.SetBool("Super Attack", true);
-                    //SuperAttack();
+                    isSuperAttacking = true;
+                    photonView.RPC("SuperAttack", RpcTarget.All);
                     //playerUI.superAttackTimer = 15;
-                    //isSuperAttacking = false;
+                    isSuperAttacking = false;
                 }
             }
             FlipPlayer();
@@ -164,6 +163,7 @@ void OnLevelWasLoaded(int level)
             playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         }
 
+        [PunRPC]
         void Jump()
         {
             rb.AddForce(transform.up * playerJump, ForceMode2D.Impulse);
@@ -180,46 +180,48 @@ void OnLevelWasLoaded(int level)
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
+        
+        [PunRPC]
+        void Attack()
+        {
+            PlayerDamage = playerAttackDamage;
+            if (isGrounded)
+            {
+                if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
+                {
+                    playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
+                    playerUI.Mana = 0;
+                    playerAnimator.SetTrigger("Attack");
+                }
+                else if (playerUI.HP > minusManaAfterAttack)
+                {
+                    playerUI.Mana -= minusManaAfterAttack;
+                    playerAnimator.SetTrigger("Attack");
+                }
+                timeBTWAttack = startTimeBTWAtck;
+            }
+        }
 
-        //void Attack()
-        //{
-        //    PlayerDamage = playerAttackDamage;
-        //    if (isGrounded)
-        //    {
-        //        if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
-        //        {
-        //            playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
-        //            playerUI.Mana = 0;
-        //            playerAnimator.SetTrigger("Attack");
-        //        }
-        //        else if (playerUI.HP > minusManaAfterAttack)
-        //        {
-        //            playerUI.Mana -= minusManaAfterAttack;
-        //            playerAnimator.SetTrigger("Attack");
-        //        }
-        //        timeBTWAttack = startTimeBTWAtck;
-        //    }
-        //}
-
-        //void SuperAttack()
-        //{
-        //    PlayerDamage = playerAttackDamage;
-        //    PlayerDamage *= 2;
-        //    if (isGrounded)
-        //    {
-        //        if ((playerUI.Mana < minusManaAfterSuperAttack) && (playerUI.HP > minusManaAfterSuperAttack))
-        //        {
-        //            playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
-        //            playerUI.Mana = 0;
-        //            playerAnimator.SetTrigger("SuperAttack");
-        //        }
-        //        else if (playerUI.HP > minusManaAfterSuperAttack)
-        //        {
-        //            playerUI.Mana -= minusManaAfterSuperAttack;
-        //            playerAnimator.SetTrigger("SuperAttack");
-        //        }
-        //    }
-        //}
+        [PunRPC]
+        void SuperAttack()
+        {
+            PlayerDamage = playerAttackDamage;
+            PlayerDamage *= 2;
+            if (isGrounded)
+            {
+                if ((playerUI.Mana < minusManaAfterSuperAttack) && (playerUI.HP > minusManaAfterSuperAttack))
+                {
+                    playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
+                    playerUI.Mana = 0;
+                    playerAnimator.SetTrigger("SuperAttack");
+                }
+                else if (playerUI.HP > minusManaAfterSuperAttack)
+                {
+                    playerUI.Mana -= minusManaAfterSuperAttack;
+                    playerAnimator.SetTrigger("SuperAttack");
+                }
+            }
+        }
 
         void AttackAnimation()
         {
