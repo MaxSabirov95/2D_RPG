@@ -25,9 +25,9 @@ namespace Max_Almog.MyCompany.MyGame
         public int minusManaAfterAttack;
         public int minusManaAfterSuperAttack;
         private float timeBTWAttack;
-        public bool isGrounded;
-        public bool isAttacking = false;
-        public bool isSuperAttacking = false;
+        private bool isGrounded;
+        private bool isAttacking = false;
+        private bool isSuperAttacking = false;
         private Rigidbody2D rb;
         private PlayerUI playerUI;
 
@@ -115,37 +115,42 @@ void OnLevelWasLoaded(int level)
 
         void Update()
         {
-            if (photonView.IsMine)
+            if (!photonView.IsMine)
             {
-                if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
-                {
-                    Jump();
-                }
-                if (timeBTWAttack <= 0)
-                {
-                    if (Input.GetButtonDown("Fire1")&&isGrounded)
-                    {
-                        //isAttacking = true;
-                        playerAnimator.SetTrigger("Attack");
-                        //isAttacking = false;
-                    }
-                }
-                else
-                {
-                    timeBTWAttack -= Time.deltaTime;
-                }
-                if (playerUI.superAttackTimer <= 0)
-                {
-                    if (Input.GetButtonDown("Fire3")&&isGrounded)
-                    {
-                        //isSuperAttacking = true;
-                        playerAnimator.SetTrigger("SuperAttack");
-                        //playerUI.superAttackTimer = 15;
-                        //isSuperAttacking = false;
-                    }
-                }
-                FlipPlayer();
+                return;
             }
+
+            if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
+            {
+                Jump();
+            }
+
+            if (timeBTWAttack <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
+                {
+                    //isAttacking = true;
+                    playerAnimator.SetTrigger("Attack");
+                    //Attack();
+                    //isAttacking = false;
+                }
+            }
+            else
+            {
+                timeBTWAttack -= Time.deltaTime;
+            }
+            if (playerUI.superAttackTimer <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftShift)&&isGrounded)
+                {
+                    //isSuperAttacking = true;
+                    playerAnimator.SetTrigger("SuperAttack");
+                    //SuperAttack();
+                    //playerUI.superAttackTimer = 15;
+                    //isSuperAttacking = false;
+                }
+            }
+            FlipPlayer();
         }
 
         private void FixedUpdate()
@@ -179,8 +184,8 @@ void OnLevelWasLoaded(int level)
         //void Attack()
         //{
         //    PlayerDamage = playerAttackDamage;
-        //    //if (isGrounded)
-        //    //{
+        //    if (isGrounded)
+        //    {
         //        if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
         //        {
         //            playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
@@ -193,7 +198,7 @@ void OnLevelWasLoaded(int level)
         //            playerAnimator.SetTrigger("Attack");
         //        }
         //        timeBTWAttack = startTimeBTWAtck;
-        //    //}
+        //    }
         //}
 
         //void SuperAttack()

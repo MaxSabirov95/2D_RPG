@@ -43,12 +43,12 @@ GameObject:
   - component: {fileID: 5170761759005892574}
   - component: {fileID: 5170761759005892568}
   - component: {fileID: 5170761759005892570}
-  - component: {fileID: 5170761759005892548}
   - component: {fileID: 5170761759005892569}
   - component: {fileID: 5170761759005892562}
-  - component: {fileID: 2974194881795246210}
   - component: {fileID: 6657939569142411524}
   - component: {fileID: 5813966485377510905}
+  - component: {fileID: 2974194881795246210}
+  - component: {fileID: 5170761759005892548}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -146,9 +146,6 @@ MonoBehaviour:
   playerAttackDamage: 10
   minusManaAfterAttack: 10
   minusManaAfterSuperAttack: 25
-  isGrounded: 0
-  isAttacking: 0
-  isSuperAttacking: 0
 --- !u!50 &5170761759005892568
 Rigidbody2D:
   serializedVersion: 4
@@ -209,25 +206,6 @@ MonoBehaviour:
       requiredAmount: 0
       currentAmount: 0
   LevelUp: {fileID: 5170761760619727832}
---- !u!95 &5170761759005892548
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170761759005892563}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 54cd930b5c914594cb6e92f249197bf7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &5170761759005892569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -280,30 +258,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.79081655, y: 0.19055128}
   m_EdgeRadius: 0
---- !u!114 &2974194881795246210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170761759005892563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 6657939569142411524}
-  - {fileID: 5170761759005892574}
-  - {fileID: 5813966485377510905}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &6657939569142411524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,8 +304,51 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: SuperAttack
   m_SynchronizeLayers:
-  - SynchronizeType: 1
+  - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &2974194881795246210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170761759005892563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 6657939569142411524}
+  - {fileID: 5170761759005892574}
+  - {fileID: 5813966485377510905}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!95 &5170761759005892548
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170761759005892563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54cd930b5c914594cb6e92f249197bf7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5170761760619727837
 GameObject:
   m_ObjectHideFlags: 0
