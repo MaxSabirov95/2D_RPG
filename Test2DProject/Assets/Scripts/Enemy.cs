@@ -20,7 +20,10 @@ namespace Max_Almog.MyCompany.MyGame
 
         public Rigidbody2D rb;
         public TMP_Text HPText;
+
+        [PunRPC]
         public int HP;
+
         public int GiveXP;
         public int DamageToPlayer;
 
@@ -55,6 +58,7 @@ namespace Max_Almog.MyCompany.MyGame
         public void EnemyTakeDamage(int EnemyDamage, PlayerUI damagingPlayer)
         {
             HP -= EnemyDamage;
+            photonView.RPC("HP", RpcTarget.AllBuffered); 
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
             if (HP <= 0)
             {
