@@ -74,7 +74,7 @@ namespace Max_Almog.MyCompany.MyGame
         public void TakeDamage(int EnemyDamge, PlayerUI damagingPlayer)
         {
             this.damagingPlayer = damagingPlayer;
-            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBuffered, new object[] { EnemyDamge});
+            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBufferedViaServer, new object[] { EnemyDamge});
         }
 
         [PunRPC]
