@@ -122,17 +122,16 @@ void OnLevelWasLoaded(int level)
 
             if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded)
             {
-                Jump();
+                photonView.RPC("Jump", RpcTarget.All);
             }
 
             if (timeBTWAttack <= 0)
             {
                 if (Input.GetKeyDown(KeyCode.LeftControl)&&isGrounded)
                 {
-                    //isAttacking = true;
-                    playerAnimator.SetBool("Attack", true);
-                    //Attack();
-                    //isAttacking = false;
+                    isAttacking = true;
+                    photonView.RPC("Attack", RpcTarget.All);
+                    isAttacking = false;
                 }
             }
             else
@@ -149,7 +148,7 @@ void OnLevelWasLoaded(int level)
                     isSuperAttacking = false;
                 }
             }
-            FlipPlayer();
+            photonView.RPC("FlipPlayer", RpcTarget.All);
         }
 
         private void FixedUpdate()
@@ -158,6 +157,12 @@ void OnLevelWasLoaded(int level)
             {
                 return;
             }
+            photonView.RPC("Move", RpcTarget.All);
+        }
+
+        [PunRPC]
+        private void Move()
+        {
             float horizontalMove = Input.GetAxis("Horizontal") * playerSpeed;
             rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
             playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -169,6 +174,7 @@ void OnLevelWasLoaded(int level)
             rb.AddForce(transform.up * playerJump, ForceMode2D.Impulse);
         }
 
+        [PunRPC]
         void FlipPlayer()
         {
             if (Input.GetAxis("Horizontal") < 0)
@@ -191,12 +197,12 @@ void OnLevelWasLoaded(int level)
                 {
                     playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
                     playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("Attack");
+                    playerAnimator.SetBool("Attack", true);
                 }
                 else if (playerUI.HP > minusManaAfterAttack)
                 {
                     playerUI.Mana -= minusManaAfterAttack;
-                    playerAnimator.SetTrigger("Attack");
+                    playerAnimator.SetBool("Attack", true);
                 }
                 timeBTWAttack = startTimeBTWAtck;
             }
@@ -213,12 +219,12 @@ void OnLevelWasLoaded(int level)
                 {
                     playerUI.HP = playerUI.HP - (minusManaAfterSuperAttack - playerUI.Mana);
                     playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("SuperAttack");
+                    playerAnimator.SetBool("Super Attack", true);
                 }
                 else if (playerUI.HP > minusManaAfterSuperAttack)
                 {
                     playerUI.Mana -= minusManaAfterSuperAttack;
-                    playerAnimator.SetTrigger("SuperAttack");
+                    playerAnimator.SetBool("Super Attack", true);
                 }
             }
         }
