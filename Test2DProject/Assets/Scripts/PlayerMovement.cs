@@ -148,7 +148,7 @@ void OnLevelWasLoaded(int level)
                     isSuperAttacking = false;
                 }
             }
-            photonView.RPC("FlipPlayer", RpcTarget.All);
+            FlipPlayer();
         }
 
         private void FixedUpdate()
