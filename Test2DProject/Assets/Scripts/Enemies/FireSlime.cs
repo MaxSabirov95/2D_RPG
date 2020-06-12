@@ -23,8 +23,9 @@ namespace Max_Almog.MyCompany.MyGame
             JumpCoolDown = Random.Range(2, 5);
         }
 
-        void Update()
+        new void Update()
         {
+            base.Update();
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down);
 
             if (groundInfo.collider == false)

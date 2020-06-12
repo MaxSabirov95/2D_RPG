@@ -49,7 +49,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        private void Update()
+        public void Update()
         {
             if (HP <= 0)
             {
