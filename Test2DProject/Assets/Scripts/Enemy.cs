@@ -49,15 +49,14 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
-<<<<<<< HEAD
                 isDead = (bool)stream.ReceiveNext();
                 //if (isDead)
                 //{
                 //    photonView.RPC("OnDeath", RpcTarget.AllBuffered);
                 //}
-=======
+
                 //isDead = (bool)stream.ReceiveNext();
->>>>>>> e450f618541fc87489704f0d32343c7fded7ec09
+
             }
         }
 
@@ -98,11 +97,9 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 isDead = true;
-<<<<<<< HEAD
+
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
-=======
-                //gameObject.SetActive(false);
->>>>>>> e450f618541fc87489704f0d32343c7fded7ec09
+
             }
         }
 
@@ -113,7 +110,10 @@ namespace Max_Almog.MyCompany.MyGame
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
-                    DropItems();
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        DropItems();
+                    }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;
                     break;
@@ -125,7 +125,7 @@ namespace Max_Almog.MyCompany.MyGame
         void DropItems()
         {
            // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
-            PhotonNetwork.Instantiate("Coin", new Vector3(0, 0, 0), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Coin", transform.position, Quaternion.identity, 0);
 
             RandomHpOrMana();
         }
@@ -142,20 +142,20 @@ namespace Max_Almog.MyCompany.MyGame
                     if (whichHp > 75)
                     {
                        // Instantiate(itemstodrop[1], transform.position, Quaternion.identity);
-                        PhotonNetwork.Instantiate("BigHPPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                        PhotonNetwork.Instantiate("BigHPPotion", transform.position, Quaternion.identity, 0);
 
                     }
                     else
                     {
                         //Instantiate(itemstodrop[2], transform.position, Quaternion.identity);
-                        PhotonNetwork.Instantiate("HPPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                        PhotonNetwork.Instantiate("HPPotion", transform.position, Quaternion.identity, 0);
 
                     }
                 }
                 else if (hpOrMana == 2)
                 {
                    // Instantiate(itemstodrop[3], transform.position, Quaternion.identity);
-                    PhotonNetwork.Instantiate("ManaPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate("ManaPotion", transform.position, Quaternion.identity, 0);
 
                 }
             }

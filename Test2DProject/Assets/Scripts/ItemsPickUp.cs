@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.EventSystems;
+using Photon.Realtime;
 //--Distance(Float)=sqrt((Y2-Y1)^2 + (X2-X1)^2)
 //--X2Y2 origin.position      X1Y1 destenetion.position
 
@@ -12,14 +15,16 @@ namespace Max_Almog.MyCompany.MyGame
         private Collider2D col;
         public float itemSpeed;
         private GameObject Player;
+        bool canBePicked=false;
 
         private Inventory inventory;
 
         public GameObject Object;
 
         private int coinRandomNumber;
+        private static bool playerInventoryFull;
 
-        private void Start()
+        void Start()
         {
             Physics2D.IgnoreLayerCollision(10, 9);
             Player = GameObject.FindWithTag("Player");
@@ -29,30 +34,36 @@ namespace Max_Almog.MyCompany.MyGame
             inventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Inventory>();
         }
 
-        private void Update()
+        void Update()
         {
-            Coin();
-            HpPotion();
-            BigHpPotion();
-            ManaPotion();
-        }
-
-        void Coin()
-        {
-            if (gameObject.CompareTag("Coin"))
+            if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
             {
                 col.isTrigger = true;
                 Vector2 deriction = Player.transform.position - transform.position;
                 rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
-                {
-                    coinRandomNumber=Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
-                    GameItems.money += coinRandomNumber;
-                    Destroy(gameObject);
-                }
+                Coin();
+                HpPotion();
+                BigHpPotion();
+                ManaPotion();
             }
         }
 
+        [PunRPC]
+        void Coin()
+        {
+            if (gameObject.CompareTag("Coin"))
+            {
+                
+               // if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
+               // {
+                    coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
+                    GameItems.money += coinRandomNumber;
+                    Destroy(gameObject);
+                //}
+            }
+        }
+
+        [PunRPC]
         void HpPotion()
         {
             if (gameObject.CompareTag("HpPotion"))
@@ -61,6 +72,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
+        [PunRPC]
         void BigHpPotion()
         {
             if (gameObject.CompareTag("BigHpPotion"))
@@ -69,6 +81,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
+        [PunRPC]
         void ManaPotion()
         {
             if (gameObject.CompareTag("ManaPotion"))
@@ -77,33 +90,29 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        ///////////////////
+        [PunRPC]
         void HpAndMana()
         {
-            for (int i = 0; i < inventory.slots.Length; i++)
+            if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
             {
-                if (!inventory.isFull[i])
+                for (int i = 0; i < inventory.slots.Length; i++)
                 {
-                    if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f)
+                    if (!inventory.isFull[i])
                     {
-                        col.isTrigger = true;
-                        Vector2 deriction = Player.transform.position - transform.position;
-                        rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                        if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
-                        {
-                            inventory.isFull[i] = true;
-                            Instantiate(Object, inventory.slots[i].transform, false);
+                        inventory.isFull[i] = true;
+                        Instantiate(Object, inventory.slots[i].transform, false);
 
-                            Destroy(gameObject);
-                            break;
-                        }
-                        else
-                        {
-                            col.isTrigger = false;
-                        }
+                        Destroy(gameObject);
+                        return;
                     }
                 }
+                playerInventoryFull = true;
             }
+            else
+            {
+                col.isTrigger = false;
+            }
+            
         }
         ///////////////////
     }
