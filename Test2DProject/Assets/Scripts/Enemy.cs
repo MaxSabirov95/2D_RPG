@@ -49,11 +49,15 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+<<<<<<< HEAD
                 isDead = (bool)stream.ReceiveNext();
                 //if (isDead)
                 //{
                 //    photonView.RPC("OnDeath", RpcTarget.AllBuffered);
                 //}
+=======
+                //isDead = (bool)stream.ReceiveNext();
+>>>>>>> e450f618541fc87489704f0d32343c7fded7ec09
             }
         }
 
@@ -71,10 +75,18 @@ namespace Max_Almog.MyCompany.MyGame
             
         }
 
+        private void Update()
+        {
+            if (isDead)
+            {
+                photonView.RPC("OnDeath", RpcTarget.MasterClient);
+            }
+        }
+
         public void TakeDamage(int EnemyDamge, PlayerUI damagingPlayer)
         {
             this.damagingPlayer = damagingPlayer;
-            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBuffered, new object[] { EnemyDamge});
+            photonView.RPC("EnemyTakeDamage", RpcTarget.AllBufferedViaServer, new object[] { EnemyDamge});
         }
 
         [PunRPC]
@@ -82,10 +94,15 @@ namespace Max_Almog.MyCompany.MyGame
         {
             HP -= EnemyDamage;
             HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+            
             if (HP <= 0)
             {
                 isDead = true;
+<<<<<<< HEAD
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+=======
+                //gameObject.SetActive(false);
+>>>>>>> e450f618541fc87489704f0d32343c7fded7ec09
             }
         }
 
