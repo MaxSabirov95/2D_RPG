@@ -45,6 +45,11 @@ MonoBehaviour:
   - StartProperties
   - enemylife
   - OnDeath
+  - HpAndMana
+  - BigHpPotion
+  - Coin
+  - HpPotion
+  - ManaPotion
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
