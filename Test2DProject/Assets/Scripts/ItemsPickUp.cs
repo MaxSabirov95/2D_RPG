@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //--Distance(Float)=sqrt((Y2-Y1)^2 + (X2-X1)^2)
@@ -77,7 +78,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        ///////////////////
+        [PunRPC]
         void HpAndMana()
         {
             for (int i = 0; i < inventory.slots.Length; i++)

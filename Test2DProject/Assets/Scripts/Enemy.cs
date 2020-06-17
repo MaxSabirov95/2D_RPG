@@ -107,7 +107,10 @@ namespace Max_Almog.MyCompany.MyGame
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
-                    DropItems();
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        DropItems();
+                    }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;
                     break;
@@ -118,8 +121,8 @@ namespace Max_Almog.MyCompany.MyGame
 
         void DropItems()
         {
+            
             // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
-            if (!PhotonNetwork.IsMasterClient) return;
             PhotonNetwork.Instantiate("Coin", transform.position, Quaternion.identity, 0);
 
             RandomHpOrMana();
