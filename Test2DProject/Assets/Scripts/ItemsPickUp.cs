@@ -59,16 +59,25 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
-                    photonView.RPC("DestroyItem", RpcTarget.MasterClient, new object[] { gameObject});
+                    PhotonView itemView = GetComponent<PhotonView>();
+                    photonView.RPC("DestroyItem", RpcTarget.MasterClient, itemView.ViewID);
                     PhotonNetwork.Destroy(gameObject);
                 //}
             }
         }
 
         [PunRPC]
-        public void DestroyItem(GameObject _GO)
+        public void DestroyItem(int viewID)
         {
-            PhotonNetwork.Destroy(_GO);
+            PhotonView itemView = PhotonView.Find(viewID);
+            if (itemView)
+            {
+                PhotonNetwork.Destroy(itemView.gameObject);
+            }
+            else
+            {
+                Debug.LogError("target photon view not found!");
+            }
         }
 
         [PunRPC]
@@ -110,7 +119,7 @@ namespace Max_Almog.MyCompany.MyGame
                         inventory.isFull[i] = true;
                         Instantiate(Object, inventory.slots[i].transform, false);
 
-                        photonView.RPC("DestroyItem", RpcTarget.MasterClient, new object[] { gameObject });
+                        photonView.RPC("DestroyItem", RpcTarget.MasterClient);
                         return;
                     }
                 }
