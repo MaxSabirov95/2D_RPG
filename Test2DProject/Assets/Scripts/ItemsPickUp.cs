@@ -10,7 +10,7 @@ using Photon.Realtime;
 
 namespace Max_Almog.MyCompany.MyGame
 {
-    public class ItemsPickUp : MonoBehaviour
+    public class ItemsPickUp : MonoBehaviourPun
     {
         private Rigidbody2D rb;
         private Collider2D col;
@@ -59,9 +59,16 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
+                    photonView.RPC("DestroyItem", RpcTarget.MasterClient, new object[] { gameObject});
                     PhotonNetwork.Destroy(gameObject);
                 //}
             }
+        }
+
+        [PunRPC]
+        public void DestroyItem(GameObject _GO)
+        {
+            PhotonNetwork.Destroy(_GO);
         }
 
         [PunRPC]
@@ -103,7 +110,7 @@ namespace Max_Almog.MyCompany.MyGame
                         inventory.isFull[i] = true;
                         Instantiate(Object, inventory.slots[i].transform, false);
 
-                        PhotonNetwork.Destroy(gameObject);
+                        photonView.RPC("DestroyItem", RpcTarget.MasterClient, new object[] { gameObject });
                         return;
                     }
                 }
