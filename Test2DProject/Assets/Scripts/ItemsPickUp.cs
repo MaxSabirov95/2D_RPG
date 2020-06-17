@@ -59,7 +59,7 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
-                    Destroy(gameObject);
+                    PhotonNetwork.Destroy(gameObject);
                 //}
             }
         }
@@ -103,7 +103,7 @@ namespace Max_Almog.MyCompany.MyGame
                         inventory.isFull[i] = true;
                         Instantiate(Object, inventory.slots[i].transform, false);
 
-                        Destroy(gameObject);
+                        PhotonNetwork.Destroy(gameObject);
                         return;
                     }
                 }
