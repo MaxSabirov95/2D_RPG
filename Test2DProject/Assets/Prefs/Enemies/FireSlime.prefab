@@ -461,8 +461,10 @@ MonoBehaviour:
   GiveXP: 25
   DamageToPlayer: 15
   goals: {fileID: 0}
+  damagingPlayer: {fileID: 0}
   MinGiveCoinsAfterDeath: 5
   MaxGiveCoinsAfterDeath: 10
+  isDead: 0
   itemstodrop:
   - {fileID: 2312676468454171276, guid: 597b08036e7d35049a68b29fa663ed6e, type: 3}
   - {fileID: 3194540619492002927, guid: b46573cee13297e4cbe36b1e9f56024c, type: 3}
