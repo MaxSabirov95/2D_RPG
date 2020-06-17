@@ -49,15 +49,12 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
-<<<<<<< HEAD
                 isDead = (bool)stream.ReceiveNext();
                 //if (isDead)
                 //{
                 //    photonView.RPC("OnDeath", RpcTarget.AllBuffered);
                 //}
-=======
                 //isDead = (bool)stream.ReceiveNext();
->>>>>>> e450f618541fc87489704f0d32343c7fded7ec09
             }
         }
 
@@ -98,11 +95,8 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 isDead = true;
-<<<<<<< HEAD
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
-=======
                 //gameObject.SetActive(false);
->>>>>>> e450f618541fc87489704f0d32343c7fded7ec09
             }
         }
 
@@ -124,8 +118,9 @@ namespace Max_Almog.MyCompany.MyGame
 
         void DropItems()
         {
-           // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
-            PhotonNetwork.Instantiate("Coin", new Vector3(0, 0, 0), Quaternion.identity, 0);
+            // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
+            if (!PhotonNetwork.IsMasterClient) return;
+            PhotonNetwork.Instantiate("Coin", transform.position, Quaternion.identity, 0);
 
             RandomHpOrMana();
         }
