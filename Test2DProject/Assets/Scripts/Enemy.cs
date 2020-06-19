@@ -95,21 +95,24 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 isDead = true;
-                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
-                //gameObject.SetActive(false);
+                //photonView.RPC("OnDeath", RpcTarget.AllBuffered);
+                photonView.RPC("Die", RpcTarget.MasterClient);
             }
         }
 
         [PunRPC]
         public void OnDeath()
         {
-            gameObject.SetActive(false);
+            //PhotonView enemyView = gameObject.GetPhotonView();
+            photonView.RPC("Die", RpcTarget.MasterClient /*enemyView.ViewID*/);
+            //gameObject.SetActive(false);
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        DropItems();
+                        //DropItems();
+                        photonView.RPC("DropItems", RpcTarget.MasterClient);
                     }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;
@@ -117,18 +120,35 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
+            
         }
 
-        void DropItems()
+        [PunRPC]
+        public void Die(/*int enemyViewID*/)
         {
-            
-            // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
+            //PhotonView enemyView = PhotonView.Find(enemyViewID);
+            //if (enemyView)
+            //{
+            int a = gameObject.GetComponent<PhotonView>().ViewID;
+            Destroy(PhotonView.Find(a).gameObject);
+            //}
+            //else
+            //{
+            //Debug.LogError("target photon view not found!");
+            //}
+        }
+
+        [PunRPC]
+        public void DropItems()
+        {        
             PhotonNetwork.Instantiate("Coin", transform.position, Quaternion.identity, 0);
 
-            RandomHpOrMana();
+            //RandomHpOrMana();
+            photonView.RPC("RandomHpOrMana", RpcTarget.MasterClient);
         }
 
-        void RandomHpOrMana()
+        [PunRPC]
+        public void RandomHpOrMana()
         {
             int ifGetHpOrMana = Random.Range(1, 101);
             if (ifGetHpOrMana > 25)
@@ -139,21 +159,18 @@ namespace Max_Almog.MyCompany.MyGame
                     int whichHp = Random.Range(1, 101);
                     if (whichHp > 75)
                     {
-                       // Instantiate(itemstodrop[1], transform.position, Quaternion.identity);
-                        PhotonNetwork.Instantiate("BigHPPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                        PhotonNetwork.Instantiate("BigHPPotion", transform.position, Quaternion.identity, 0);
 
                     }
                     else
                     {
-                        //Instantiate(itemstodrop[2], transform.position, Quaternion.identity);
-                        PhotonNetwork.Instantiate("HPPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                        PhotonNetwork.Instantiate("HPPotion", transform.position, Quaternion.identity, 0);
 
                     }
                 }
                 else if (hpOrMana == 2)
                 {
-                   // Instantiate(itemstodrop[3], transform.position, Quaternion.identity);
-                    PhotonNetwork.Instantiate("ManaPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate("ManaPotion", transform.position, Quaternion.identity, 0);
 
                 }
             }
