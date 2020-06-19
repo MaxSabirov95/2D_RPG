@@ -103,7 +103,9 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void OnDeath()
         {
-            gameObject.SetActive(false);
+            PhotonView enemyView = gameObject.GetPhotonView();
+            Debug.LogWarning(enemyView.ViewID + ", " + enemyView.gameObject.name);
+            //photonView.RPC("Die", RpcTarget.MasterClient, enemyView.ViewID);
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
@@ -117,10 +119,25 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
+            gameObject.SetActive(false);
         }
 
+        //[PunRPC]
+        //public void Die(int enemyViewID)
+        //{
+        //    PhotonView enemyView = PhotonView.Find(enemyViewID);
+        //    if (enemyView)
+        //    {
+        //        PhotonNetwork.Destroy(enemyView.gameObject);
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Photon View not found!");
+        //    }
+        //}
+
         [PunRPC]
-        void DropItems()
+        public void DropItems()
         {
             
             // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
@@ -130,7 +147,7 @@ namespace Max_Almog.MyCompany.MyGame
         }
 
         [PunRPC]
-        void RandomHpOrMana()
+        public void RandomHpOrMana()
         {
             int ifGetHpOrMana = Random.Range(1, 101);
             if (ifGetHpOrMana > 25)
