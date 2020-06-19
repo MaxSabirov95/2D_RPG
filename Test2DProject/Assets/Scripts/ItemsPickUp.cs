@@ -43,7 +43,7 @@ namespace Max_Almog.MyCompany.MyGame
                 col.isTrigger = true;
                 Vector2 deriction = Player.transform.position - transform.position;
                 rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                photonView.RPC("Coin", RpcTarget.AllBuffered);                photonView.RPC("HpPotion", RpcTarget.AllBuffered);                photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                photonView.RPC("Coin", RpcTarget.MasterClient);                photonView.RPC("HpPotion", RpcTarget.MasterClient);                photonView.RPC("BigHpPotion", RpcTarget.MasterClient);                photonView.RPC("ManaPotion", RpcTarget.MasterClient);
             }
         }
 
@@ -57,8 +57,7 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
-                    photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
-                    PhotonNetwork.Destroy(gameObject);
+                    photonView.RPC("DestroyItem", RpcTarget.MasterClient);
                 //}
             }
         }
@@ -110,7 +109,7 @@ namespace Max_Almog.MyCompany.MyGame
                         Instantiate(Object, inventory.slots[i].transform, false);
 
                         PhotonView itemView = gameObject.GetComponent<PhotonView>();
-                        photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
+                        photonView.RPC("DestroyItem", RpcTarget.MasterClient);
                         return;
                     }
                 }
