@@ -57,8 +57,7 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
-                    PhotonView itemView = gameObject.GetComponent<PhotonView>();
-                    photonView.RPC("DestroyItem", RpcTarget.MasterClient, itemView.ViewID);
+                    photonView.RPC("DestroyItem", RpcTarget.MasterClient);
                     PhotonNetwork.Destroy(gameObject);
                 //}
             }
@@ -67,15 +66,8 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void DestroyItem(int viewID)
         {
-            PhotonView itemView = PhotonView.Find(viewID);
-            if (itemView)
-            {
-                PhotonNetwork.Destroy(itemView.gameObject);
-            }
-            else
-            {
-                Debug.LogError("target photon view not found!");
-            }
+            int ID = gameObject.GetComponent<PhotonView>().ViewID;
+            Destroy(PhotonView.Find(ID).gameObject);
         }
 
         [PunRPC]
