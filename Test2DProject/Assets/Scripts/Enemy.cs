@@ -107,8 +107,7 @@ namespace Max_Almog.MyCompany.MyGame
                 case enemytypes.FireSlime:
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        photonView.RPC("DropItems", RpcTarget.MasterClient);
-
+                        photonView.RPC("DropItems", RpcTarget.AllBuffered);
                     }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;
@@ -116,7 +115,7 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            photonView.RPC("Die", RpcTarget.MasterClient);
+            photonView.RPC("Die", RpcTarget.AllBuffered);
         }
 
         [PunRPC]
@@ -133,7 +132,7 @@ namespace Max_Almog.MyCompany.MyGame
             // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
             PhotonNetwork.Instantiate("Coin", transform.position, Quaternion.identity, 0);
 
-            photonView.RPC("RandomHpOrMana", RpcTarget.MasterClient);
+            photonView.RPC("RandomHpOrMana", RpcTarget.AllBuffered);
         }
 
         [PunRPC]

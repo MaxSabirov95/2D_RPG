@@ -15,7 +15,7 @@ namespace Max_Almog.MyCompany.MyGame
         private Rigidbody2D rb;
         private Collider2D col;
         public float itemSpeed;
-        private GameObject Player;
+        private PlayerMovement Player;
         bool canBePicked=false;
 
         private Inventory inventory;
@@ -29,7 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
         {
             Physics2D.IgnoreLayerCollision(10, 9);
             Player[] playerList = PhotonNetwork.PlayerList;
-            Player = GameObject.FindWithTag("Player");
+            //Player = GameObject.FindWithTag("Player");
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
 
@@ -38,12 +38,15 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
-            if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
+            if (Player)
             {
-                col.isTrigger = true;
-                Vector2 deriction = Player.transform.position - transform.position;
-                rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                photonView.RPC("Coin", RpcTarget.AllBuffered);                photonView.RPC("HpPotion", RpcTarget.AllBuffered);                photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
+                {
+                    col.isTrigger = true;
+                    Vector2 deriction = Player.transform.position - transform.position;
+                    rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
+                    photonView.RPC("Coin", RpcTarget.AllBuffered);                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                }
             }
         }
 
@@ -57,14 +60,14 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
-                    photonView.RPC("DestroyItem", RpcTarget.MasterClient);
+                    photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
                     PhotonNetwork.Destroy(gameObject);
                 //}
             }
         }
 
         [PunRPC]
-        public void DestroyItem(int viewID)
+        public void DestroyItem()
         {
             int ID = gameObject.GetComponent<PhotonView>().ViewID;
             Destroy(PhotonView.Find(ID).gameObject);
@@ -110,7 +113,7 @@ namespace Max_Almog.MyCompany.MyGame
                         Instantiate(Object, inventory.slots[i].transform, false);
 
                         PhotonView itemView = gameObject.GetComponent<PhotonView>();
-                        photonView.RPC("DestroyItem", RpcTarget.MasterClient, itemView.ViewID);
+                        photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
                         return;
                     }
                 }
@@ -124,22 +127,13 @@ namespace Max_Almog.MyCompany.MyGame
         }
         ///////////////////
 
-        //private void OnTriggerEnter2D(Collider2D collision)
-        //{
-        //    if (Player == null)
-        //    {
-        //        Player = collision.gameObject;
-        //    }
-        //}
-
-        //private void OnTriggerStay2D(Collider2D collision)
-        //{
-            
-        //}
-
-        //private void OnCollisionEnter2D(Collision2D collision)
-        //{
-            
-        //}
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            PlayerMovement potentialPlayer = collision.GetComponent<PlayerMovement>();
+            if (Player == null && potentialPlayer)
+            {
+                Player = potentialPlayer;
+            }
+        }
     }
 }
