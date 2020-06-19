@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 4245234493123093165}
   - component: {fileID: -3445830904535042250}
   - component: {fileID: -574823453955500083}
-  - component: {fileID: 2789482023061952068}
   m_Layer: 11
   m_Name: FireSlime
   m_TagString: FireSlime
@@ -536,19 +535,3 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!58 &2789482023061952068
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2490611554650955023}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.205

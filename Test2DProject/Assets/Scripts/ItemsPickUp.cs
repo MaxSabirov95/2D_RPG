@@ -29,7 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
         {
             Physics2D.IgnoreLayerCollision(10, 9);
             Player[] playerList = PhotonNetwork.PlayerList;
-            //Player = GameObject.FindWithTag("Player");
+            Player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
 
@@ -38,15 +38,12 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
-            if (Player)
+            if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
             {
-                if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
-                {
-                    col.isTrigger = true;
-                    Vector2 deriction = Player.transform.position - transform.position;
-                    rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                    photonView.RPC("Coin", RpcTarget.AllBuffered);                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
-                }
+                col.isTrigger = true;
+                Vector2 deriction = Player.transform.position - transform.position;
+                rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
+                photonView.RPC("Coin", RpcTarget.AllBuffered);                photonView.RPC("HpPotion", RpcTarget.AllBuffered);                photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
             }
         }
 
@@ -127,13 +124,24 @@ namespace Max_Almog.MyCompany.MyGame
         }
         ///////////////////
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            PlayerMovement potentialPlayer = collision.GetComponent<PlayerMovement>();
-            if (Player == null && potentialPlayer)
-            {
-                Player = potentialPlayer;
-            }
-        }
+        //private void OnTriggerStay2D(Collider2D collision)
+        //{
+        //    //PlayerMovement potentialPlayer = collision.GetComponent<PlayerMovement>();
+        //    //if (Player == null && potentialPlayer)
+        //    //{
+        //    //    Player = potentialPlayer;
+        //    //}
+
+        //    if (collision.gameObject.CompareTag("Player"))
+        //    {
+        //        //if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
+        //       // {
+        //            col.isTrigger = true;
+        //            Vector2 deriction = Player.transform.position - transform.position;
+        //            rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
+        //            photonView.RPC("Coin", RpcTarget.AllBuffered);        //            photonView.RPC("HpPotion", RpcTarget.AllBuffered);        //            photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);        //            photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+        //        //}
+        //    }
+        //}
     }
 }
