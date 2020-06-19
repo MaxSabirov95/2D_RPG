@@ -29,7 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
         {
             Physics2D.IgnoreLayerCollision(10, 9);
             Player[] playerList = PhotonNetwork.PlayerList;
-            //Player = GameObject.FindWithTag("Player");
+            Player = null;
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
 
@@ -54,15 +54,11 @@ namespace Max_Almog.MyCompany.MyGame
         void Coin()
         {
             if (gameObject.CompareTag("Coin"))
-            {
-                
-               // if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
-               // {
+            {      
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
                     photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
                     PhotonNetwork.Destroy(gameObject);
-                //}
             }
         }
 
@@ -125,7 +121,6 @@ namespace Max_Almog.MyCompany.MyGame
             }
             
         }
-        ///////////////////
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
