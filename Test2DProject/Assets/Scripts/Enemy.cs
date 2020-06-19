@@ -95,23 +95,20 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 isDead = true;
-                photonView.RPC("OnDeath", RpcTarget.AllBuffered);
-                //gameObject.SetActive(false);
+                photonView.RPC("OnDeath", RpcTarget.MasterClient);
             }
         }
 
         [PunRPC]
         public void OnDeath()
         {
-            PhotonView enemyView = gameObject.GetPhotonView();
-            Debug.LogWarning(enemyView.ViewID + ", " + enemyView.gameObject.name);
-            //photonView.RPC("Die", RpcTarget.MasterClient, enemyView.ViewID);
             switch (TypesOfEnemies)
             {
                 case enemytypes.FireSlime:
                     if (PhotonNetwork.IsMasterClient)
                     {
                         photonView.RPC("DropItems", RpcTarget.MasterClient);
+
                     }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;
@@ -119,22 +116,15 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            gameObject.SetActive(false);
+            photonView.RPC("Die", RpcTarget.MasterClient);
         }
 
-        //[PunRPC]
-        //public void Die(int enemyViewID)
-        //{
-        //    PhotonView enemyView = PhotonView.Find(enemyViewID);
-        //    if (enemyView)
-        //    {
-        //        PhotonNetwork.Destroy(enemyView.gameObject);
-        //    }
-        //    else
-        //    {
-        //        Debug.LogError("Photon View not found!");
-        //    }
-        //}
+        [PunRPC]
+        public void Die()
+        {
+            int ID = gameObject.GetComponent<PhotonView>().ViewID;
+            Destroy(PhotonView.Find(ID).gameObject);
+        }
 
         [PunRPC]
         public void DropItems()
