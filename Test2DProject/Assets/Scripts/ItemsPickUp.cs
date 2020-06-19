@@ -28,8 +28,6 @@ namespace Max_Almog.MyCompany.MyGame
         void Start()
         {
             Physics2D.IgnoreLayerCollision(10, 9);
-            Player[] playerList = PhotonNetwork.PlayerList;
-            
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
 
@@ -38,11 +36,10 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
-            if (Player==null)
+            if (Player == null)
             {
                 Player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
             }
-            
             if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
             {
                 col.isTrigger = true;
