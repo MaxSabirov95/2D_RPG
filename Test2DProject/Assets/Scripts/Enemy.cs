@@ -109,7 +109,7 @@ namespace Max_Almog.MyCompany.MyGame
                 case enemytypes.FireSlime:
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        DropItems();
+                        photonView.RPC("DropItems", RpcTarget.MasterClient);
                     }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;
@@ -119,15 +119,17 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
+        [PunRPC]
         void DropItems()
         {
             
             // Instantiate(itemstodrop[0], transform.position, Quaternion.identity);
             PhotonNetwork.Instantiate("Coin", transform.position, Quaternion.identity, 0);
 
-            RandomHpOrMana();
+            photonView.RPC("RandomHpOrMana", RpcTarget.MasterClient);
         }
 
+        [PunRPC]
         void RandomHpOrMana()
         {
             int ifGetHpOrMana = Random.Range(1, 101);
@@ -140,20 +142,20 @@ namespace Max_Almog.MyCompany.MyGame
                     if (whichHp > 75)
                     {
                        // Instantiate(itemstodrop[1], transform.position, Quaternion.identity);
-                        PhotonNetwork.Instantiate("BigHPPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                        PhotonNetwork.Instantiate("BigHPPotion", transform.position, Quaternion.identity, 0);
 
                     }
                     else
                     {
                         //Instantiate(itemstodrop[2], transform.position, Quaternion.identity);
-                        PhotonNetwork.Instantiate("HPPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                        PhotonNetwork.Instantiate("HPPotion", transform.position, Quaternion.identity, 0);
 
                     }
                 }
                 else if (hpOrMana == 2)
                 {
                    // Instantiate(itemstodrop[3], transform.position, Quaternion.identity);
-                    PhotonNetwork.Instantiate("ManaPotion", new Vector3(0, 0, 0), Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate("ManaPotion", transform.position, Quaternion.identity, 0);
 
                 }
             }

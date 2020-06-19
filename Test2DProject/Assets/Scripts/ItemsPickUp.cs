@@ -28,6 +28,7 @@ namespace Max_Almog.MyCompany.MyGame
         void Start()
         {
             Physics2D.IgnoreLayerCollision(10, 9);
+            Player[] playerList = PhotonNetwork.PlayerList;
             Player = GameObject.FindWithTag("Player");
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
@@ -42,10 +43,7 @@ namespace Max_Almog.MyCompany.MyGame
                 col.isTrigger = true;
                 Vector2 deriction = Player.transform.position - transform.position;
                 rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                Coin();
-                HpPotion();
-                BigHpPotion();
-                ManaPotion();
+                photonView.RPC("Coin", RpcTarget.AllBuffered);                photonView.RPC("HpPotion", RpcTarget.AllBuffered);                photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
             }
         }
 
@@ -59,7 +57,7 @@ namespace Max_Almog.MyCompany.MyGame
                // {
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
-                    PhotonView itemView = GetComponent<PhotonView>();
+                    PhotonView itemView = gameObject.GetComponent<PhotonView>();
                     photonView.RPC("DestroyItem", RpcTarget.MasterClient, itemView.ViewID);
                     PhotonNetwork.Destroy(gameObject);
                 //}
@@ -119,7 +117,8 @@ namespace Max_Almog.MyCompany.MyGame
                         inventory.isFull[i] = true;
                         Instantiate(Object, inventory.slots[i].transform, false);
 
-                        photonView.RPC("DestroyItem", RpcTarget.MasterClient);
+                        PhotonView itemView = gameObject.GetComponent<PhotonView>();
+                        photonView.RPC("DestroyItem", RpcTarget.MasterClient, itemView.ViewID);
                         return;
                     }
                 }
@@ -132,5 +131,23 @@ namespace Max_Almog.MyCompany.MyGame
             
         }
         ///////////////////
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (Player == null)
+        //    {
+        //        Player = collision.gameObject;
+        //    }
+        //}
+
+        //private void OnTriggerStay2D(Collider2D collision)
+        //{
+            
+        //}
+
+        //private void OnCollisionEnter2D(Collision2D collision)
+        //{
+            
+        //}
     }
 }
