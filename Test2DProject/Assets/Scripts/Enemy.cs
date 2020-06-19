@@ -107,8 +107,7 @@ namespace Max_Almog.MyCompany.MyGame
                 case enemytypes.FireSlime:
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        photonView.RPC("DropItems", RpcTarget.MasterClient);
-
+                        photonView.RPC("DropItems", RpcTarget.AllBuffered);
                     }
                     //goals.Killquest();
                     damagingPlayer.XP += GiveXP;

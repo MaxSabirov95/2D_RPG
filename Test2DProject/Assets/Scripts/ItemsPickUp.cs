@@ -15,7 +15,7 @@ namespace Max_Almog.MyCompany.MyGame
         private Rigidbody2D rb;
         private Collider2D col;
         public float itemSpeed;
-        private GameObject Player;
+        private PlayerMovement Player;
         bool canBePicked=false;
 
         private Inventory inventory;
@@ -29,7 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
         {
             Physics2D.IgnoreLayerCollision(10, 9);
             Player[] playerList = PhotonNetwork.PlayerList;
-            Player = GameObject.FindWithTag("Player");
+            //Player = GameObject.FindWithTag("Player");
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
 
@@ -45,10 +45,7 @@ namespace Max_Almog.MyCompany.MyGame
                     col.isTrigger = true;
                     Vector2 deriction = Player.transform.position - transform.position;
                     rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                    photonView.RPC("Coin", RpcTarget.AllBuffered);
-                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);
-                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);
-                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                    photonView.RPC("Coin", RpcTarget.AllBuffered);                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
                 }
             }
         }
@@ -64,6 +61,7 @@ namespace Max_Almog.MyCompany.MyGame
                     coinRandomNumber = Random.Range(Enemy.MinCoins, Enemy.MaxCoins);
                     GameItems.money += coinRandomNumber;
                     photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
+                    PhotonNetwork.Destroy(gameObject);
                 //}
             }
         }
@@ -134,9 +132,8 @@ namespace Max_Almog.MyCompany.MyGame
             PlayerMovement potentialPlayer = collision.GetComponent<PlayerMovement>();
             if (Player == null && potentialPlayer)
             {
-                Player = collision.gameObject;
+                Player = potentialPlayer;
             }
         }
-
     }
 }
