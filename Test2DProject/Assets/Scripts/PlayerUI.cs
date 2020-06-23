@@ -9,6 +9,7 @@ namespace Max_Almog.MyCompany.MyGame
     public class PlayerUI : MonoBehaviourPunCallbacks
     {
         // HP-Mana-XP-Level
+        public GameObject playerCanvas;
         public Text HPText;
         public Text ManaText;
         public Text XPText;
@@ -29,6 +30,10 @@ namespace Max_Almog.MyCompany.MyGame
         private void Awake()
         {
             BlackBoard.playerUI = this;
+            if (!photonView.IsMine)
+            {
+                playerCanvas.SetActive(false);
+            }
         }
         void Update()
         {
