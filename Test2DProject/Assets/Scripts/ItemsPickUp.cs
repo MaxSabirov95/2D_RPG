@@ -30,7 +30,6 @@ namespace Max_Almog.MyCompany.MyGame
             Physics2D.IgnoreLayerCollision(10, 9);
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
-
             inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         }
 
@@ -121,7 +120,6 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 col.isTrigger = false;
             }
-            
         }
         ///////////////////
 
