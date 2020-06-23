@@ -144,7 +144,7 @@ void OnLevelWasLoaded(int level)
                 {
                     isSuperAttacking = true;
                     photonView.RPC("SuperAttack", RpcTarget.All);
-                    //playerUI.superAttackTimer = 15;
+                    playerUI.superAttackTimer = 10;
                     isSuperAttacking = false;
                 }
             }

@@ -13,9 +13,6 @@ namespace Max_Almog.MyCompany.MyGame
         public Text ManaText;
         public Text XPText;
         public Text LevelText;
-        public Text WholeHPText;
-        public Text WholeManaText;
-        public Text WholeXPText;
         public Text superAttackTimerText;
         public float HP=100;
         public float Mana = 100;
@@ -29,22 +26,21 @@ namespace Max_Almog.MyCompany.MyGame
         public Quest quest;
 
         public ParticleSystem LevelUp;
-
+        private void Awake()
+        {
+            BlackBoard.playerUI = this;
+        }
         void Update()
         {
             if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
             {
                 return;
             }
-            //HPText.GetComponent<Text>().text = "" + HP.ToString("f0");
-            //ManaText.GetComponent<Text>().text = "" + Mana.ToString("f0");
-            //XPText.GetComponent <Text>().text = "" + XP.ToString("f0");
-            //LevelText.GetComponent<Text>().text = "" + Level.ToString("f0");
-            //WholeHPText.GetComponent<Text>().text = "" + WholeHP.ToString("f0");
-            //WholeManaText.GetComponent<Text>().text = "" + WholeMana.ToString("f0");
-            //WholeXPText.GetComponent<Text>().text = "" + WholeXP.ToString("f0");
-            //LevelText.GetComponent<Text>().text = "" + Level.ToString("f0");
-            //superAttackTimerText.GetComponent<Text>().text = "" + superAttackTimer.ToString("f0");
+            HPText.GetComponent<Text>().text = "HP " + HP.ToString("f0")+ "/" + WholeHP.ToString("f0");
+            ManaText.GetComponent<Text>().text = "MN " + Mana.ToString("f0")+ "/" + WholeMana.ToString("f0");
+            XPText.GetComponent<Text>().text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
+            LevelText.GetComponent<Text>().text = "" + Level.ToString("f0")+"  Level";
+            superAttackTimerText.GetComponent<Text>().text = "" + superAttackTimer.ToString("f0");
 
             if (HP <= 0)
             {
@@ -55,11 +51,19 @@ namespace Max_Almog.MyCompany.MyGame
                 HP += 1*0.5f*Time.deltaTime;
                 HP = Mathf.Clamp(HP, 0, WholeHP);
             }
+            else
+            {
+                HP = Mathf.Clamp(HP, 0, WholeHP);
+            }
 
             if (Mana < WholeMana)
             {
                 Mana += 1 * 0.25f * Time.deltaTime;
                 Mana = Mathf.Clamp(Mana, 0, WholeMana);
+            }
+            else
+            {
+                HP = Mathf.Clamp(HP, 0, WholeHP);
             }
 
             if (XP >= WholeXP)
@@ -76,6 +80,11 @@ namespace Max_Almog.MyCompany.MyGame
             if (superAttackTimer > 0)
             {
                 superAttackTimer -= Time.deltaTime;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                XP += 100;
             }
         }
 

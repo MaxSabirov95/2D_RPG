@@ -30,12 +30,10 @@ namespace Max_Almog.MyCompany.MyGame
                 SkillBoard = !SkillBoard;
                 if (!SkillBoard)
                 {
-                    Time.timeScale = 1;
                     skillPointBoard.SetActive(false);
                 }
                 else
                 {
-                    Time.timeScale = 0;
                     skillPointBoard.SetActive(true);
                 }
             }
@@ -55,21 +53,19 @@ namespace Max_Almog.MyCompany.MyGame
 
         public void SkillPointToHP()
         {
-            return;
-            //if (skillpoints > 0)
-            //{
-            //    skillpoints--;
-            //    PlayerUI.WholeHP += 15;
-            //}
+            if (skillpoints > 0)
+            {
+                skillpoints--;
+                BlackBoard.playerUI.WholeHP += 15;
+            }
         }
         public void SkillPointToMana()
         {
-            return;
-            //if (skillpoints > 0)
-            //{
-            //    skillpoints--;
-            //    PlayerUI.WholeMana += 15;
-            //}
+            if (skillpoints > 0)
+            {
+                skillpoints--;
+                BlackBoard.playerUI.WholeMana += 15;
+            }
         }
     }
 }

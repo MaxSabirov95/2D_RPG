@@ -31,7 +31,7 @@ namespace Max_Almog.MyCompany.MyGame
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
 
-            inventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Inventory>();
+            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         }
 
         void Update()

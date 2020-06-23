@@ -24,37 +24,33 @@ MonoBehaviour:
     Protocol: 0
     AuthMode: 0
     EnableLobbyStatistics: 0
-    NetworkLogging: 0
+    NetworkLogging: 5
   DevRegion: eu
   PunLogging: 2
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - Attack
+  - BigHpPotion
   - ClickRpc
+  - Coin
+  - DestroyItem
   - DestroyRpc
   - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-  - Attack
-  - SuperAttack
-  - Jump
-  - FlipPlayer
-  - Move
-  - EnemyTakeDamage
-  - StartProperties
-  - enemylife
-  - OnDeath
-  - HpAndMana
-  - BigHpPotion
-  - Coin
-  - HpPotion
-  - ManaPotion
-  - DestroyItem
-  - A
-  - DropItems
-  - RandomHpOrMana
   - Die
+  - DropItems
+  - EnemyTakeDamage
+  - Fire
+  - HpAndMana
+  - HpPotion
+  - Jump
+  - ManaPotion
+  - OnDeath
+  - RandomHpOrMana
+  - RespawnSpaceship
+  - StartProperties
+  - SuperAttack
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
