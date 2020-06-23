@@ -32,10 +32,6 @@ namespace Max_Almog.MyCompany.MyGame
         }
         void Update()
         {
-            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-            {
-                return;
-            }
             HPText.GetComponent<Text>().text = "HP " + HP.ToString("f0")+ "/" + WholeHP.ToString("f0");
             ManaText.GetComponent<Text>().text = "MN " + Mana.ToString("f0")+ "/" + WholeMana.ToString("f0");
             XPText.GetComponent<Text>().text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");

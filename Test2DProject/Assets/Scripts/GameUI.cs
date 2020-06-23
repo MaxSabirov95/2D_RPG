@@ -37,6 +37,7 @@ namespace Max_Almog.MyCompany.MyGame
                     skillPointBoard.SetActive(true);
                 }
             }
+
             if (Input.GetKeyDown(KeyCode.I))
             {
                 InventoryBoard = !InventoryBoard;
