@@ -8741,6 +8741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f50487c41389184d8946e2ca5d1133d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCanvas: {fileID: 3345255769672149403}
   HPText: {fileID: 3345255770907963002}
   ManaText: {fileID: 3345255770824051122}
   XPText: {fileID: 3345255771043682403}
