@@ -12,7 +12,7 @@ namespace Max_Almog.MyCompany.MyGame
 {
     public class ItemsPickUp : MonoBehaviourPun
     {
-        public float searchRadius = 1f;
+        public float searchRadius = 2.5f;
         private Rigidbody2D rb;
         private Collider2D col;
         public float itemSpeed;
@@ -33,15 +33,22 @@ namespace Max_Almog.MyCompany.MyGame
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
             inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-            Collider2D[] players = Physics2D.OverlapCircleAll(transform.position, searchRadius, playerLayer);
-            
         }
 
         void Update()
         {
             if (Player == null)
             {
-                Player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+                Collider2D[] players = Physics2D.OverlapCircleAll(transform.position, searchRadius, playerLayer);
+
+                if (players.Length > 0)
+                {
+                    //assign player variable
+                    if (players.Length == 1)
+                    {
+                        Player = players[0].GetComponent<PlayerMovement>();
+                    }
+                }
             }
             if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
             {
