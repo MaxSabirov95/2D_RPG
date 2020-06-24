@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf02509a4a31ba347a3997509b4396e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 1
+  searchRadius: 2.5
   itemSpeed: 5
   Object: {fileID: 8806045939378217460, guid: 6048147f9eea35a4da9434a792b67591, type: 3}
   playerLayer:
