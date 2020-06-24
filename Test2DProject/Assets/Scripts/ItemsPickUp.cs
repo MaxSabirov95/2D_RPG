@@ -33,6 +33,7 @@ namespace Max_Almog.MyCompany.MyGame
             Physics2D.IgnoreLayerCollision(10, 9);
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
+            
         }
 
         void Update()
@@ -48,6 +49,7 @@ namespace Max_Almog.MyCompany.MyGame
                     {
                         Player = players[0].GetComponent<PlayerMovement>();
                         inventory = Player.GetComponent<Inventory>();
+                        Debug.Log(inventory.name);
                     }
                 }
             }
@@ -141,28 +143,7 @@ namespace Max_Almog.MyCompany.MyGame
                 {
                     col.isTrigger = false;
                 }
-            } 
+            }
         }
-        ///////////////////
-
-        //private void OnTriggerStay2D(Collider2D collision)
-        //{
-        //    //PlayerMovement potentialPlayer = collision.GetComponent<PlayerMovement>();
-        //    //if (Player == null && potentialPlayer)
-        //    //{
-        //    //    Player = potentialPlayer;
-        //    //}
-
-        //    if (collision.gameObject.CompareTag("Player"))
-        //    {
-        //        //if (Vector2.Distance(Player.transform.position, transform.position) < 2.5f && !playerInventoryFull)
-        //       // {
-        //            col.isTrigger = true;
-        //            Vector2 deriction = Player.transform.position - transform.position;
-        //            rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-        //            photonView.RPC("Coin", RpcTarget.AllBuffered);        //            photonView.RPC("HpPotion", RpcTarget.AllBuffered);        //            photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);        //            photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
-        //        //}
-        //    }
-        //}
     }
 }
