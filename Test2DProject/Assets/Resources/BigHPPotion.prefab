@@ -146,8 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf02509a4a31ba347a3997509b4396e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  searchRadius: 1
   itemSpeed: 5
   Object: {fileID: 8806045939378217460, guid: 6048147f9eea35a4da9434a792b67591, type: 3}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &3714360582300391413
 MonoBehaviour:
   m_ObjectHideFlags: 0
