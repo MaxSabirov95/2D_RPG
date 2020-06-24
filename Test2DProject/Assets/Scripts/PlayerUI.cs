@@ -35,6 +35,7 @@ namespace Max_Almog.MyCompany.MyGame
                 playerCanvas.SetActive(false);
             }
         }
+
         void Update()
         {
             HPText.GetComponent<Text>().text = "HP " + HP.ToString("f0")+ "/" + WholeHP.ToString("f0");
