@@ -50,12 +50,23 @@ namespace Max_Almog.MyCompany.MyGame
                     }
                 }
             }
-            if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
+
+            else
             {
-                col.isTrigger = true;
-                Vector2 deriction = Player.transform.position - transform.position;
-                rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                photonView.RPC("Coin", RpcTarget.AllBuffered);                photonView.RPC("HpPotion", RpcTarget.AllBuffered);                photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
+                {
+                    col.isTrigger = true;
+                    Vector2 deriction = Player.transform.position - transform.position;
+                    rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
+                    photonView.RPC("Coin", RpcTarget.AllBuffered);
+                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);
+                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);
+                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                }
+                //else if(Vector2.Distance(Player.transform.position, transform.position) > searchRadius)
+                //{
+                //    Player = null;
+                //}
             }
         }
 
