@@ -33,30 +33,23 @@ namespace Max_Almog.MyCompany.MyGame
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
             inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-            Collider2D[] players = Physics2D.OverlapCircleAll(transform.position, searchRadius, playerLayer);
-            //for (int i = 0; i < players.Length; i++)
-            //{
-            //    Debug.Log(players[i].name+",called by"+ gameObject.name);
-            //}
-            if (players.Length > 0)
-            {
-                if (players.Length == 1)
-                {
-                    Player = players[0].GetComponent<PlayerMovement>();
-                }
-                else
-                {
-                    
-                }
-            }
         }
 
         void Update()
         {
-            //if (Player == null)
-            //{
-            //    Player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-            //}
+            if (Player == null)
+            {
+                Collider2D[] players = Physics2D.OverlapCircleAll(transform.position, searchRadius, playerLayer);
+
+                if (players.Length > 0)
+                {
+                    //assign player variable
+                    if (players.Length == 1)
+                    {
+                        Player = players[0].GetComponent<PlayerMovement>();
+                    }
+                }
+            }
             if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
             {
                 col.isTrigger = true;
