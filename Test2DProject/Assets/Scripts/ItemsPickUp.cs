@@ -29,6 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
+            inventory = null;
             Player = null;
             inventory = null;
             Physics2D.IgnoreLayerCollision(10, 9);
