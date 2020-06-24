@@ -38,7 +38,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
-            if ((Player == null) && (inventory == null))
+            if (Player == null)
             {
                 Collider2D[] players = Physics2D.OverlapCircleAll(transform.position, searchRadius, playerLayer);
 
@@ -49,7 +49,6 @@ namespace Max_Almog.MyCompany.MyGame
                     {
                         Player = players[0].GetComponent<PlayerMovement>();
                         inventory = players[0].GetComponent<Inventory>();
-                        Debug.Log(inventory.name);
                     }
                 }
             }
@@ -122,7 +121,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         void HpAndMana()
         {
-            if ((Player)&&(inventory))
+            if (Player && inventory)
             {
                 if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
                 {
