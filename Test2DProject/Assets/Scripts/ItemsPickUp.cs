@@ -29,6 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Start()
         {
+            Player = null;
             Physics2D.IgnoreLayerCollision(10, 9);
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
@@ -44,7 +45,7 @@ namespace Max_Almog.MyCompany.MyGame
                 if (players.Length > 0)
                 {
                     //assign player variable
-                    if (players.Length == 1)
+                    if (players.Length == 2)
                     {
                         Player = players[0].GetComponent<PlayerMovement>();
                     }
@@ -52,6 +53,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
             else
             {
+                Vector2 difference = Player.transform.position - transform.position;
                 if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
                 {
                     col.isTrigger = true;
@@ -59,10 +61,10 @@ namespace Max_Almog.MyCompany.MyGame
                     rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
                     photonView.RPC("Coin", RpcTarget.AllBuffered);                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
                 }
-                //else if (Vector2.Distance(Player.transform.position, transform.position) > searchRadius)
-                //{
-                //    Player = null;
-                //}
+                else if (Vector2.Distance(Player.transform.position, transform.position) > searchRadius)
+                {
+                    Player = null;
+                }
             }
         }
 
