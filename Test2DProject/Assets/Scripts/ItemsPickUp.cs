@@ -33,7 +33,6 @@ namespace Max_Almog.MyCompany.MyGame
             Physics2D.IgnoreLayerCollision(10, 9);
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
-            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         }
 
         void Update()
@@ -48,12 +47,12 @@ namespace Max_Almog.MyCompany.MyGame
                     if (players.Length == 2)
                     {
                         Player = players[0].GetComponent<PlayerMovement>();
+                        inventory = Player.GetComponent<Inventory>();
                     }
                 }
             }
             else
             {
-                Vector2 difference = Player.transform.position - transform.position;
                 if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
                 {
                     col.isTrigger = true;
@@ -120,26 +119,29 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         void HpAndMana()
         {
-            if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
+            if (Player)
             {
-                for (int i = 0; i < inventory.slots.Length; i++)
+                if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
                 {
-                    if (!inventory.isFull[i])
+                    for (int i = 0; i < inventory.slots.Length; i++)
                     {
-                        inventory.isFull[i] = true;
-                        Instantiate(Object, inventory.slots[i].transform, false);
+                        if (!inventory.isFull[i])
+                        {
+                            inventory.isFull[i] = true;
+                            Instantiate(Object, inventory.slots[i].transform, false);
 
-                        PhotonView itemView = gameObject.GetComponent<PhotonView>();
-                        photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
-                        return;
+                            PhotonView itemView = gameObject.GetComponent<PhotonView>();
+                            photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
+                            return;
+                        }
                     }
+                    playerInventoryFull = true;
                 }
-                playerInventoryFull = true;
-            }
-            else
-            {
-                col.isTrigger = false;
-            }
+                else
+                {
+                    col.isTrigger = false;
+                }
+            } 
         }
         ///////////////////
 
