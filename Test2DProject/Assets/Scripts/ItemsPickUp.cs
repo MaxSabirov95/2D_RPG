@@ -30,6 +30,7 @@ namespace Max_Almog.MyCompany.MyGame
         void Start()
         {
             Player = null;
+            inventory = null;
             Physics2D.IgnoreLayerCollision(10, 9);
             rb = GetComponent<Rigidbody2D>();
             col = gameObject.GetComponent<Collider2D>();
