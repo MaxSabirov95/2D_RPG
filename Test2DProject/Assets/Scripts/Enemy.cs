@@ -115,7 +115,7 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            photonView.RPC("Die", RpcTarget.MasterClient);
+            photonView.RPC("Die", RpcTarget.AllBuffered);
         }
 
         [PunRPC]

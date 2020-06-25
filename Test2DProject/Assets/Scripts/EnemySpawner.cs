@@ -30,6 +30,7 @@ namespace Max_Almog.MyCompany.MyGame
         
         public void EnemySpawn()
         {
+            if (!PhotonNetwork.IsMasterClient) return;
             for (int i = 0; i < 2; i++)
             {
                 Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
