@@ -42,16 +42,15 @@ namespace Max_Almog.MyCompany.MyGame
                 if (movingRight == true)
                 {
                     transform.eulerAngles = new Vector3(0, -180, 0);
-                    HPText.rectTransform.localScale = new Vector3(-1f, 1f, 1f);
                     movingRight = false;
                 }
                 else
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
-                    HPText.rectTransform.localScale = new Vector3(1f, 1f, 1f);
                     movingRight = true;
                 }
             }
+            HPText.transform.forward = Camera.main.transform.forward;
         }
 
         [PunRPC]
