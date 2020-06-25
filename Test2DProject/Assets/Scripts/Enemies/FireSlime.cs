@@ -61,7 +61,7 @@ namespace Max_Almog.MyCompany.MyGame
             rb.AddForce(transform.up * SlimeJump + -transform.right * SlimeJump, ForceMode2D.Impulse);
             JumpCoolDown = Random.Range(2, 5); ;
         }
-    
+
         private void OnCollisionStay2D(Collision2D Enemy)
         {
             if (Enemy.gameObject.CompareTag("Ground"))

@@ -125,19 +125,19 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (Player && inventory)
             {
-                for (int i = 0; i < inventory.slots.Length; i++)
-                {
-                    if (!inventory.isFull[i])
+                    for (int i = 0; i < inventory.slots.Length; i++)
                     {
-                        inventory.isFull[i] = true;
-                        Instantiate(Object, inventory.slots[i].transform);
+                        if (!inventory.isFull[i])
+                        {
+                            inventory.isFull[i] = true;
+                            Instantiate(Object, inventory.slots[i].transform);
 
-                        PhotonView itemView = gameObject.GetComponent<PhotonView>();
-                        photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
-                        return;
+                            PhotonView itemView = gameObject.GetComponent<PhotonView>();
+                            photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
+                            return;
+                        }
                     }
-                }
-                playerInventoryFull = true;
+                    playerInventoryFull = true;
             }
         }
     }
