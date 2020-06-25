@@ -25,6 +25,17 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
+            photonView.RPC("CheckGround", RpcTarget.AllBuffered);
+            JumpCoolDown -= Time.deltaTime;
+            if ((JumpCoolDown <= 0))
+            {
+                photonView.RPC("Jump", RpcTarget.All);
+            }
+        }
+
+        [PunRPC]
+        private void CheckGround()
+        {
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down);
 
             if (groundInfo.collider == false)
@@ -41,11 +52,6 @@ namespace Max_Almog.MyCompany.MyGame
                     HPText.rectTransform.localScale = new Vector3(1f, 1f, 1f);
                     movingRight = true;
                 }
-            }
-            JumpCoolDown -= Time.deltaTime;
-            if ((JumpCoolDown <= 0))
-            {
-                photonView.RPC("Jump", RpcTarget.All);
             }
         }
 
