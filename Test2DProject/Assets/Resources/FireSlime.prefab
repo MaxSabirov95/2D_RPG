@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2490611553540750378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.83, y: -0.116, z: 0}
+  m_LocalPosition: {x: -0.809, y: -0.116, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2490611554650955029}
@@ -472,9 +472,12 @@ MonoBehaviour:
   - {fileID: 6350593824145348539, guid: ca8dc5b7f3a85264e8c5b0c00278ed78, type: 3}
   - {fileID: 6720518179226733803, guid: 8be9557bb34077746a0ee3fb713e921f, type: 3}
   - {fileID: 5093944886576169452, guid: 17d7519eb8e87734fac8910e5a08093f, type: 3}
-  SlimeJump: 5
+  SlimeJump: 3
   fireSlimeAnimator: {fileID: 2490611554650955019}
   groundDetection: {fileID: 2490611553540750389}
+  ground:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &4245234493123093165
 MonoBehaviour:
   m_ObjectHideFlags: 0

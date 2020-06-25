@@ -121,8 +121,9 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void Die()
         {
+            BlackBoard.spawnerInstance.FlagSpawnEnemy();
             int ID = gameObject.GetComponent<PhotonView>().ViewID;
-            Destroy(PhotonView.Find(ID).gameObject);
+            PhotonNetwork.Destroy(PhotonView.Find(ID).gameObject);
         }
 
         [PunRPC]

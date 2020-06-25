@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Max_Almog.MyCompany.MyGame
 {
-    public class BlackBoard : MonoBehaviour
+    public static class BlackBoard
     {
         public static PlayerUI playerUI;
+        public static EnemySpawner spawnerInstance;
     }
 }
 

@@ -17,6 +17,9 @@ namespace Max_Almog.MyCompany.MyGame
         private bool movingRight;
         public Transform groundDetection;
 
+        public LayerMask ground;
+        float groundCheckDist = 1f;
+
         void Start()
         {
             photonView.RPC("StartProperties", RpcTarget.AllBuffered);
@@ -35,7 +38,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         private void CheckGround()
         {
-            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down);
+            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, groundCheckDist, ground);
 
             if (groundInfo.collider == false)
             {
