@@ -115,13 +115,13 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            photonView.RPC("Die", RpcTarget.AllBuffered);
+            photonView.RPC("Die", RpcTarget.MasterClient);
         }
 
         [PunRPC]
         public void Die()
         {
-            BlackBoard.spawnerInstance.FlagSpawnEnemy();
+            BlackBoard.spawnerInstance.EnemySpawn();
             int ID = gameObject.GetComponent<PhotonView>().ViewID;
             PhotonNetwork.Destroy(PhotonView.Find(ID).gameObject);
         }
