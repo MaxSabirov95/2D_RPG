@@ -52,6 +52,7 @@ MonoBehaviour:
   - StartProperties
   - SuperAttack
   - CheckGround
+  - EnemySpawn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
