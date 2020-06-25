@@ -125,14 +125,12 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (Player && inventory)
             {
-                if (Vector2.Distance(Player.transform.position, transform.position) < 0.8f)
-                {
                     for (int i = 0; i < inventory.slots.Length; i++)
                     {
                         if (!inventory.isFull[i])
                         {
                             inventory.isFull[i] = true;
-                            Instantiate(Object, inventory.slots[i].transform, false);
+                            Instantiate(Object, inventory.slots[i].transform);
 
                             PhotonView itemView = gameObject.GetComponent<PhotonView>();
                             photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
@@ -140,11 +138,6 @@ namespace Max_Almog.MyCompany.MyGame
                         }
                     }
                     playerInventoryFull = true;
-                }
-                else
-                {
-                    col.isTrigger = false;
-                }
             }
         }
     }
