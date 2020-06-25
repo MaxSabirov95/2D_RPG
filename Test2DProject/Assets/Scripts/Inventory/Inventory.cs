@@ -5,5 +5,13 @@ using UnityEngine;
 public class Inventory:MonoBehaviour
 {
     public bool[] isFull;
-    public GameObject[] slots;
+    public Slot[] slots;
+
+    private void Start()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].SetInventory(this);
+        }
+    }
 }
