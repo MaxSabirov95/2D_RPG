@@ -25,7 +25,7 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
-            photonView.RPC("CheckGround", RpcTarget.AllBuffered);
+            CheckGround();
             JumpCoolDown -= Time.deltaTime;
             if ((JumpCoolDown <= 0))
             {
@@ -33,7 +33,6 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        [PunRPC]
         private void CheckGround()
         {
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down);
