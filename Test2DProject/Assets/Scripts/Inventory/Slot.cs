@@ -8,12 +8,6 @@ public class Slot : MonoBehaviour
 {
     private Inventory inventory;
     public int slotNumber;
-    
-
-    private void Start()
-    {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-    }
 
     private void Update()
     {
@@ -32,5 +26,10 @@ public class Slot : MonoBehaviour
                 GameObject.Destroy(child.gameObject);
             }
         }
+    }
+
+    public void SetInventory(Inventory i)
+    {
+        inventory = i;
     }
 }
