@@ -63,27 +63,13 @@ namespace Max_Almog.MyCompany.MyGame
         {
             MinCoins = MinGiveCoinsAfterDeath;
             MaxCoins = MaxGiveCoinsAfterDeath;
-            HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+            HPText.text = "" + HP.ToString("f0");
 
             Physics2D.IgnoreLayerCollision(11, 11);
             Physics2D.IgnoreLayerCollision(11, 10);
 
             rb = GetComponent<Rigidbody2D>();
-            
         }
-
-        private void Awake()
-        {
-            BlackBoard.enemy = this;
-        }
-
-        //private void Update()
-        //{
-        //    if (isDead)
-        //    {
-        //        photonView.RPC("OnDeath", RpcTarget.MasterClient);
-        //    }
-        //}
 
         public void TakeDamage(int EnemyDamge, PlayerUI damagingPlayer)
         {
