@@ -10,6 +10,7 @@ namespace Max_Almog.MyCompany.MyGame
     {
         // HP-Mana-XP-Level
         public GameObject playerCanvas;
+
         public Text HPText;
         public Text ManaText;
         public Text XPText;
@@ -49,7 +50,7 @@ namespace Max_Almog.MyCompany.MyGame
 
             if (HP <= 0)
             {
-                GameManager.instance.LeaveRoom();
+                transform.position = new Vector3(-7f, 0f, 0f);
             }
             else if (HP < WholeHP)
             {
