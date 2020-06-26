@@ -245,7 +245,8 @@ namespace Max_Almog.MyCompany.MyGame
 
             if (player.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                playerAnimator.SetBool("Damage", true);
+                if (!isDead)
+                    playerAnimator.SetBool("Damage", true);
             }
         }
         private void OnTriggerExit2D(Collider2D player)
