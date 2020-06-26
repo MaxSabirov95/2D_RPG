@@ -10,7 +10,6 @@ namespace Max_Almog.MyCompany.MyGame
     {
         // HP-Mana-XP-Level
         public GameObject playerCanvas;
-
         public Text HPText;
         public Text ManaText;
         public Text XPText;
@@ -18,11 +17,11 @@ namespace Max_Almog.MyCompany.MyGame
         public Text superAttackTimerText;
         public Text enemyDieCounter;
         public float HP=100;
-        public float Mana = 100;
+        public float Mana = 50;
         public float XP = 0;
         public float Level = 1;
         public float WholeHP=100;
-        public float WholeMana=100;
+        public float WholeMana=50;
         public float superAttackTimer;
         public float WholeXP;
         public int totalKills;
@@ -50,7 +49,9 @@ namespace Max_Almog.MyCompany.MyGame
 
             if (HP <= 0)
             {
+                //GameManager.instance.LeaveRoom();
                 transform.position = new Vector3(-7f, 0f, 0f);
+                ResetStats();
             }
             else if (HP < WholeHP)
             {
@@ -92,6 +93,15 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 XP += 100;
             }
+        }
+
+        private void ResetStats()
+        {
+            HP = WholeHP = 100;
+            Mana = WholeMana = 50;
+            XP = 0;
+            WholeXP = 100;
+            Level = 1;
         }
 
         public void Killquest()
