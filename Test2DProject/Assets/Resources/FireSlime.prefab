@@ -459,7 +459,7 @@ MonoBehaviour:
   HPText: {fileID: 2490611553197207204}
   HP: 20
   GiveXP: 25
-  DamageToPlayer: 15
+  DamageToPlayer: 10
   goals: {fileID: 0}
   damagingPlayer: {fileID: 0}
   MinGiveCoinsAfterDeath: 5
