@@ -8962,6 +8962,7 @@ MonoBehaviour:
   playerAttackDamage: 10
   minusManaAfterAttack: 10
   minusManaAfterSuperAttack: 25
+  isDead: 0
 --- !u!114 &8839390557034084349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8989,7 +8990,6 @@ MonoBehaviour:
   WholeMana: 50
   superAttackTimer: 10
   WholeXP: 100
-  totalKills: 0
   quest:
     questIsActive: 0
     questTitle: 

@@ -31,6 +31,8 @@ namespace Max_Almog.MyCompany.MyGame
         private Rigidbody2D rb;
         private PlayerUI playerUI;
 
+        public bool isDead = false;
+
         #region IPunObservable implementation
 
 
@@ -86,15 +88,6 @@ namespace Max_Almog.MyCompany.MyGame
 #endif
         }
 
-#if !UNITY_5_4_OR_NEWER
-/// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
-void OnLevelWasLoaded(int level)
-{
-    this.CalledOnLevelWasLoaded(level);
-}
-#endif
-
-
         void CalledOnLevelWasLoaded(int level)
         {
             // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
@@ -115,7 +108,7 @@ void OnLevelWasLoaded(int level)
 
         void Update()
         {
-            if (!photonView.IsMine)
+            if (!photonView.IsMine || isDead)
             {
                 return;
             }
@@ -151,9 +144,15 @@ void OnLevelWasLoaded(int level)
             FlipPlayer();
         }
 
+        public void ResetDeadFlag()
+        {
+            playerAnimator.SetBool("Dead", false);
+            isDead = false;
+        }
+
         private void FixedUpdate()
         {
-            if (!photonView.IsMine)
+            if (!photonView.IsMine || isDead)
             {
                 return;
             }
@@ -191,7 +190,7 @@ void OnLevelWasLoaded(int level)
             PlayerDamage = playerAttackDamage;
             if (isGrounded)
             {
-                playerAnimator.SetTrigger("Attack");
+                playerAnimator.SetBool("Attack", true);
                 timeBTWAttack = startTimeBTWAtck;
             }
         }
@@ -272,5 +271,11 @@ void OnLevelWasLoaded(int level)
             this.CalledOnLevelWasLoaded(scene.buildIndex);
         }
 #endif
+
+        public void Die()
+        {
+            playerAnimator.SetBool("Dead", true);
+            isDead = true;
+        }
     }
 }

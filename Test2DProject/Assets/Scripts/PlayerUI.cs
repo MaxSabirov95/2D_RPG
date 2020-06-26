@@ -24,9 +24,10 @@ namespace Max_Almog.MyCompany.MyGame
         public float WholeMana=50;
         public float superAttackTimer;
         public float WholeXP;
-        public int totalKills;
 
         public Quest quest;
+
+        PlayerMovement playerMove;
 
         public ParticleSystem LevelUp;
         private void Awake()
@@ -36,6 +37,11 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 playerCanvas.SetActive(false);
             }
+        }
+
+        private void Start()
+        {
+            playerMove = GetComponent<PlayerMovement>();
         }
 
         void Update()
@@ -49,9 +55,7 @@ namespace Max_Almog.MyCompany.MyGame
 
             if (HP <= 0)
             {
-                //GameManager.instance.LeaveRoom();
-                transform.position = new Vector3(-7f, 0f, 0f);
-                ResetStats();
+                StartCoroutine(PlayerDeath());
             }
             else if (HP < WholeHP)
             {
@@ -102,6 +106,7 @@ namespace Max_Almog.MyCompany.MyGame
             XP = 0;
             WholeXP = 100;
             Level = 1;
+            GameUI.skillpoints = 0;
         }
 
         public void Killquest()
@@ -120,7 +125,17 @@ namespace Max_Almog.MyCompany.MyGame
 
         public void TakeDamage(float damage)
         {
-            HP -= damage;
+            if (HP > 0)
+                HP -= damage;
+        }
+
+        IEnumerator PlayerDeath()
+        {
+            playerMove.Die();
+            yield return new WaitForSeconds(1f);
+            transform.position = new Vector3(-7f, 0f, 0f);
+            ResetStats();
+            playerMove.ResetDeadFlag();
         }
     }
 }
