@@ -191,17 +191,7 @@ void OnLevelWasLoaded(int level)
             PlayerDamage = playerAttackDamage;
             if (isGrounded)
             {
-                if ((playerUI.Mana < minusManaAfterAttack) && (playerUI.HP > minusManaAfterAttack))
-                {
-                    playerUI.HP = playerUI.HP - (minusManaAfterAttack - playerUI.Mana);
-                    playerUI.Mana = 0;
-                    playerAnimator.SetTrigger("Attack");
-                }
-                else if (playerUI.HP > minusManaAfterAttack)
-                {
-                    playerUI.Mana -= minusManaAfterAttack;
-                    playerAnimator.SetTrigger("Attack");
-                }
+                playerAnimator.SetTrigger("Attack");
                 timeBTWAttack = startTimeBTWAtck;
             }
         }
@@ -237,7 +227,7 @@ void OnLevelWasLoaded(int level)
                 {
                     enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(PlayerDamage, playerUI);
                 }
-            } 
+            }
         }
 
         private void OnDrawGizmosSelected()

@@ -8,7 +8,6 @@ namespace Max_Almog.MyCompany.MyGame
     {
         public static PlayerUI playerUI;
         public static EnemySpawner spawnerInstance;
-        public static Enemy enemy;
     }
 }
 

@@ -72,11 +72,6 @@ namespace Max_Almog.MyCompany.MyGame
             
         }
 
-        private void Awake()
-        {
-            BlackBoard.enemy = this;
-        }
-
         //private void Update()
         //{
         //    if (isDead)
