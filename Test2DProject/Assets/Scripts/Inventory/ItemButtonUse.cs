@@ -10,6 +10,12 @@ namespace Max_Almog.MyCompany.MyGame
     {
         public enum ItemButtons {normalHp, Mana, BigHp };
         public ItemButtons buttons;
+        Slot parentSlot;
+
+        private void Start()
+        {
+            parentSlot = GetComponentInParent<Slot>();
+        }
 
         public void OnPointerClick()
         {
@@ -19,6 +25,7 @@ namespace Max_Almog.MyCompany.MyGame
                     if (BlackBoard.playerUI.WholeHP > BlackBoard.playerUI.HP)
                     {
                         BlackBoard.playerUI.HP += 20;
+                        parentSlot.FlagNotFull();
                         Destroy(gameObject);
                     }
                     break;
@@ -26,6 +33,7 @@ namespace Max_Almog.MyCompany.MyGame
                     if (BlackBoard.playerUI.WholeMana > BlackBoard.playerUI.Mana)
                     {
                         BlackBoard.playerUI.Mana += 20;
+                        parentSlot.FlagNotFull();
                         Destroy(gameObject);
                     }
                     break;
@@ -33,6 +41,7 @@ namespace Max_Almog.MyCompany.MyGame
                     if (BlackBoard.playerUI.WholeHP > BlackBoard.playerUI.HP)
                     {
                         BlackBoard.playerUI.HP += 40;
+                        parentSlot.FlagNotFull();
                         Destroy(gameObject);
                     }
                     break;

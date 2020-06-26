@@ -8906,7 +8906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryFull: 0
-  isSlotTaken: 
+  isSlotTaken: 00000000000000000000000000000000
   slots:
   - {fileID: 3345255771254531838}
   - {fileID: 3345255770067031335}

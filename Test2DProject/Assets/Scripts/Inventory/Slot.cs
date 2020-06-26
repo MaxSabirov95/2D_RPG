@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour
 {
     private Inventory inventory;
     public int slotNumber;
+    public bool isFull;
 
     private void Update()
     {
@@ -15,6 +16,12 @@ public class Slot : MonoBehaviour
         {
             inventory.isSlotTaken[slotNumber] = false;
         }
+    }
+
+    public void FlagNotFull()
+    {
+        isFull = false;
+        inventory.inventoryFull = false;
     }
 
     public void ClickLeft()

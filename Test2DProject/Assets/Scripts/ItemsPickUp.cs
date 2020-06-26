@@ -55,13 +55,14 @@ namespace Max_Almog.MyCompany.MyGame
             }
             else
             {
-                if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !inventory.inventoryFull)
+                if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius)
                 {
-                    col.isTrigger = true;
                     Vector2 deriction = Player.transform.position - transform.position;
                     rb.MovePosition((Vector2)transform.position + (deriction * itemSpeed * Time.deltaTime));
-                    photonView.RPC("Coin", RpcTarget.AllBuffered);                    photonView.RPC("HpPotion", RpcTarget.AllBuffered);                    photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                    photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
-                }
+                    photonView.RPC("Coin", RpcTarget.AllBuffered);                    if (!inventory.inventoryFull)
+                    {
+                        photonView.RPC("HpPotion", RpcTarget.AllBuffered);                        photonView.RPC("BigHpPotion", RpcTarget.AllBuffered);                        photonView.RPC("ManaPotion", RpcTarget.AllBuffered);
+                    }                }
                 else if (Vector2.Distance(Player.transform.position, transform.position) > searchRadius)
                 {
                     Player = null;
@@ -126,9 +127,9 @@ namespace Max_Almog.MyCompany.MyGame
             {
                 for (int i = 0; i < inventory.slots.Length; i++)
                 {
-                    if (!inventory.isSlotTaken[i])
+                    if (!inventory.slots[i].isFull)
                     {
-                        inventory.isSlotTaken[i] = true;
+                        inventory.slots[i].isFull = true;
                         Instantiate(Object, inventory.slots[i].transform);
 
                         PhotonView itemView = gameObject.GetComponent<PhotonView>();
