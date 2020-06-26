@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 6
+  isFull: 0
 --- !u!61 &3345255769558452436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -714,6 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 7
+  isFull: 0
 --- !u!61 &3345255769585204380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -829,6 +831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 14
+  isFull: 0
 --- !u!61 &3345255769586630318
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1178,6 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 9
+  isFull: 0
 --- !u!61 &3345255769933993805
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1293,6 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 1
+  isFull: 0
 --- !u!61 &3345255770067031332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1408,6 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 5
+  isFull: 0
 --- !u!61 &3345255770171663448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1757,6 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 15
+  isFull: 0
 --- !u!61 &3345255770434207599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1950,6 +1957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 11
+  isFull: 0
 --- !u!61 &3345255770702209570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2065,6 +2073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 10
+  isFull: 0
 --- !u!61 &3345255770733994415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2298,6 +2307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 4
+  isFull: 0
 --- !u!61 &3345255770832247464
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2648,6 +2658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 8
+  isFull: 0
 --- !u!61 &3345255771059565751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2763,6 +2774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 13
+  isFull: 0
 --- !u!61 &3345255771070651139
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2878,6 +2890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 12
+  isFull: 0
 --- !u!61 &3345255771095313623
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2993,6 +3006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 2
+  isFull: 0
 --- !u!61 &3345255771221688262
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3108,6 +3122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 0
+  isFull: 0
 --- !u!61 &3345255771254531839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3431,6 +3446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 3
+  isFull: 0
 --- !u!61 &3345255771562103435
 BoxCollider2D:
   m_ObjectHideFlags: 0
