@@ -8,6 +8,9 @@ namespace Max_Almog.MyCompany.MyGame
 {
     public class EnemySpawner : MonoBehaviourPun
     {
+        public List<Enemy> enemiesOnScreen = new List<Enemy>();
+        int enemyToSpawn = 2;
+
         private void Awake()
         {
             BlackBoard.spawnerInstance = this;
@@ -17,25 +20,33 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (PhotonNetwork.IsMasterClient)
             {
-               // for (int i = 0; i < 3; i++)
-                //{
-                    Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
-                    PhotonNetwork.Instantiate("FireSlime", spawnPoint, Quaternion.identity);
-               // }
+                Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
+                PhotonNetwork.Instantiate("FireSlime", spawnPoint, Quaternion.identity);
             }
         }
 
         public float minX;
         public float maxX;
         
-        public void EnemySpawn()
+        public void FlagEnemyDeath(Enemy e)
         {
             if (!PhotonNetwork.IsMasterClient) return;
-            for (int i = 0; i < 2; i++)
+            enemiesOnScreen.Remove(e);
+            if (enemiesOnScreen.Count == 0)
             {
-                Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
-                PhotonNetwork.Instantiate("FireSlime", spawnPoint,Quaternion.identity);
+                for (int i = 0; i < enemyToSpawn; i++)
+                {
+                    Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
+                    PhotonNetwork.Instantiate("FireSlime", spawnPoint,Quaternion.identity);
+                }
             }
+            if (enemyToSpawn < 5)
+                enemyToSpawn++;
+        }
+
+        public void AddEnemy(Enemy e)
+        {
+            enemiesOnScreen.Add(e);
         }
     }
 }

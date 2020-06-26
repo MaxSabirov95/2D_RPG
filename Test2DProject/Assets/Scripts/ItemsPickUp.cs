@@ -25,7 +25,6 @@ namespace Max_Almog.MyCompany.MyGame
         public LayerMask playerLayer;
 
         private int coinRandomNumber;
-        private static bool playerInventoryFull;
 
         void Start()
         {
@@ -56,7 +55,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
             else
             {
-                if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !playerInventoryFull)
+                if (Vector2.Distance(Player.transform.position, transform.position) < searchRadius && !inventory.inventoryFull)
                 {
                     col.isTrigger = true;
                     Vector2 deriction = Player.transform.position - transform.position;
@@ -125,19 +124,19 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (Player && inventory)
             {
-                    for (int i = 0; i < inventory.slots.Length; i++)
+                for (int i = 0; i < inventory.slots.Length; i++)
+                {
+                    if (!inventory.isSlotTaken[i])
                     {
-                        if (!inventory.isFull[i])
-                        {
-                            inventory.isFull[i] = true;
-                            Instantiate(Object, inventory.slots[i].transform);
+                        inventory.isSlotTaken[i] = true;
+                        Instantiate(Object, inventory.slots[i].transform);
 
-                            PhotonView itemView = gameObject.GetComponent<PhotonView>();
-                            photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
-                            return;
-                        }
+                        PhotonView itemView = gameObject.GetComponent<PhotonView>();
+                        photonView.RPC("DestroyItem", RpcTarget.AllBuffered);
+                        return;
                     }
-                    playerInventoryFull = true;
+                }
+                inventory.inventoryFull = true;
             }
         }
     }

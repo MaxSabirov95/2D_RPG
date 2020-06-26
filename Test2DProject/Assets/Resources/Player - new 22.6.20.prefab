@@ -305,7 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.1689213, g: 0.1979927, b: 0.49056602, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8905,7 +8905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e220bb2a0e4b6694ea3bca604ccb0718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFull: 00000000000000000000000000000000
+  inventoryFull: 0
+  isSlotTaken: 
   slots:
   - {fileID: 3345255771254531838}
   - {fileID: 3345255770067031335}
@@ -9119,6 +9120,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Super Attack
+  - Type: 4
+    SynchronizeType: 0
+    Name: Dead
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

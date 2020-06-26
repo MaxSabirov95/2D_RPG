@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Inventory:MonoBehaviour
 {
-    public bool[] isFull;
+    public bool inventoryFull;
+    public bool[] isSlotTaken;
     public Slot[] slots;
 
     private void Start()

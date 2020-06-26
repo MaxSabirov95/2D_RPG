@@ -63,6 +63,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void StartProperties()
         {
+            BlackBoard.spawnerInstance.AddEnemy(this);
             MinCoins = MinGiveCoinsAfterDeath;
             MaxCoins = MaxGiveCoinsAfterDeath;
             HPText.text = "" + HP.ToString("f0");
@@ -116,7 +117,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void Die()
         {
-            BlackBoard.spawnerInstance.EnemySpawn();
+            BlackBoard.spawnerInstance.FlagEnemyDeath(this);
             int ID = gameObject.GetComponent<PhotonView>().ViewID;
             Destroy(PhotonView.Find(ID).gameObject);
         }
