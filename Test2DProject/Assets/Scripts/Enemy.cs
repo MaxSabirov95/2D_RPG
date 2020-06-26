@@ -34,6 +34,8 @@ namespace Max_Almog.MyCompany.MyGame
         public static int MinCoins;
         public static int MaxCoins;
 
+        public static int deathCounter;
+
         public bool isDead;
 
         public GameObject[] itemstodrop;
@@ -86,6 +88,7 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 isDead = true;
+                deathCounter++;
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
             }
         }
@@ -106,7 +109,7 @@ namespace Max_Almog.MyCompany.MyGame
                 default:
                     break;
             }
-            BlackBoard.playerUI.totalKills++;
+            
             photonView.RPC("Die", RpcTarget.AllBuffered);
         }
 

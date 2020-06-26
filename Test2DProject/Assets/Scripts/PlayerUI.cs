@@ -45,7 +45,7 @@ namespace Max_Almog.MyCompany.MyGame
             XPText.text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
             LevelText.text = "" + Level.ToString("f0")+"  Level";
             superAttackTimerText.text = "" + superAttackTimer.ToString("f0");
-            enemyDieCounter.text = "" + totalKills.ToString();
+            enemyDieCounter.text = "" + Enemy.deathCounter.ToString();
 
             if (HP <= 0)
             {
