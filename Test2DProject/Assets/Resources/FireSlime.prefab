@@ -457,7 +457,7 @@ MonoBehaviour:
   TypesOfEnemies: 0
   rb: {fileID: 2490611554650955017}
   HPText: {fileID: 2490611553197207204}
-  HP: 25
+  HP: 20
   GiveXP: 25
   DamageToPlayer: 15
   goals: {fileID: 0}
@@ -472,7 +472,7 @@ MonoBehaviour:
   - {fileID: 6350593824145348539, guid: ca8dc5b7f3a85264e8c5b0c00278ed78, type: 3}
   - {fileID: 6720518179226733803, guid: 8be9557bb34077746a0ee3fb713e921f, type: 3}
   - {fileID: 5093944886576169452, guid: 17d7519eb8e87734fac8910e5a08093f, type: 3}
-  SlimeJump: 3
+  SlimeJump: 5
   fireSlimeAnimator: {fileID: 2490611554650955019}
   groundDetection: {fileID: 2490611553540750389}
   ground:

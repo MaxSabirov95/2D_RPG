@@ -72,13 +72,18 @@ namespace Max_Almog.MyCompany.MyGame
             
         }
 
-        private void Update()
+        private void Awake()
         {
-            if (isDead)
-            {
-                photonView.RPC("OnDeath", RpcTarget.MasterClient);
-            }
+            BlackBoard.enemy = this;
         }
+
+        //private void Update()
+        //{
+        //    if (isDead)
+        //    {
+        //        photonView.RPC("OnDeath", RpcTarget.MasterClient);
+        //    }
+        //}
 
         public void TakeDamage(int EnemyDamge, PlayerUI damagingPlayer)
         {
@@ -90,7 +95,7 @@ namespace Max_Almog.MyCompany.MyGame
         public void EnemyTakeDamage(int EnemyDamage)
         {
             HP -= EnemyDamage;
-            HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
+            HPText.text = "" + HP.ToString("f0");
             
             if (HP <= 0)
             {
@@ -110,11 +115,12 @@ namespace Max_Almog.MyCompany.MyGame
                         photonView.RPC("DropItems", RpcTarget.MasterClient);
                     }
                     //goals.Killquest();
-                    //damagingPlayer.XP += GiveXP;
+                    damagingPlayer.XP += GiveXP;
                     break;
                 default:
                     break;
             }
+            BlackBoard.playerUI.totalKills++;
             photonView.RPC("Die", RpcTarget.AllBuffered);
         }
 

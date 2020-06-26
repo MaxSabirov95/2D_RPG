@@ -17,11 +17,11 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                for (int i = 0; i < 3; i++)
-                {
+               // for (int i = 0; i < 3; i++)
+                //{
                     Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
                     PhotonNetwork.Instantiate("FireSlime", spawnPoint, Quaternion.identity);
-                }
+               // }
             }
         }
 

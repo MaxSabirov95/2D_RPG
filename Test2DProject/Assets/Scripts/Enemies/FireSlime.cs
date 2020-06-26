@@ -18,7 +18,7 @@ namespace Max_Almog.MyCompany.MyGame
         public Transform groundDetection;
 
         public LayerMask ground;
-        float groundCheckDist = 1f;
+        float groundCheckDist = 5f;
 
         void Start()
         {

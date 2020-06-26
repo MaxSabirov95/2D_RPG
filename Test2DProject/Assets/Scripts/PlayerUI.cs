@@ -15,6 +15,7 @@ namespace Max_Almog.MyCompany.MyGame
         public Text XPText;
         public Text LevelText;
         public Text superAttackTimerText;
+        public Text enemyDieCounter;
         public float HP=100;
         public float Mana = 100;
         public float XP = 0;
@@ -23,6 +24,7 @@ namespace Max_Almog.MyCompany.MyGame
         public float WholeMana=100;
         public float superAttackTimer;
         public float WholeXP;
+        public int totalKills;
 
         public Quest quest;
 
@@ -38,11 +40,12 @@ namespace Max_Almog.MyCompany.MyGame
 
         void Update()
         {
-            HPText.GetComponent<Text>().text = "HP " + HP.ToString("f0")+ "/" + WholeHP.ToString("f0");
-            ManaText.GetComponent<Text>().text = "MN " + Mana.ToString("f0")+ "/" + WholeMana.ToString("f0");
-            XPText.GetComponent<Text>().text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
-            LevelText.GetComponent<Text>().text = "" + Level.ToString("f0")+"  Level";
-            superAttackTimerText.GetComponent<Text>().text = "" + superAttackTimer.ToString("f0");
+            HPText.text = "HP " + HP.ToString("f0")+ "/" + WholeHP.ToString("f0");
+            ManaText.text = "MN " + Mana.ToString("f0")+ "/" + WholeMana.ToString("f0");
+            XPText.text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
+            LevelText.text = "" + Level.ToString("f0")+"  Level";
+            superAttackTimerText.text = "" + superAttackTimer.ToString("f0");
+            enemyDieCounter.text = "" + totalKills.ToString();
 
             if (HP <= 0)
             {
@@ -50,7 +53,7 @@ namespace Max_Almog.MyCompany.MyGame
             }
             else if (HP < WholeHP)
             {
-                HP += 1*0.5f*Time.deltaTime;
+                HP += 1*0.75f*Time.deltaTime;
                 HP = Mathf.Clamp(HP, 0, WholeHP);
             }
             else
@@ -60,7 +63,7 @@ namespace Max_Almog.MyCompany.MyGame
 
             if (Mana < WholeMana)
             {
-                Mana += 1 * 0.25f * Time.deltaTime;
+                Mana += 1 * 0.75f * Time.deltaTime;
                 Mana = Mathf.Clamp(Mana, 0, WholeMana);
             }
             else
