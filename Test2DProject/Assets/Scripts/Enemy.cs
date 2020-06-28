@@ -112,15 +112,15 @@ namespace Max_Almog.MyCompany.MyGame
                     break;
             }
             
-            photonView.RPC("Die", RpcTarget.AllBuffered);
+            photonView.RPC("Die", RpcTarget.MasterClient);
+            int ID = gameObject.GetComponent<PhotonView>().ViewID;
+            Destroy(PhotonView.Find(ID).gameObject);
         }
 
         [PunRPC]
         public void Die()
         {
             BlackBoard.spawnerInstance.CountEnemyDeath();
-            int ID = gameObject.GetComponent<PhotonView>().ViewID;
-            Destroy(PhotonView.Find(ID).gameObject);
         }
 
         [PunRPC]
