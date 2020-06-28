@@ -10,7 +10,7 @@ namespace Max_Almog.MyCompany.MyGame
     {
         public int maxEnemySpawn=8;
         int enemyToSpawn = 2;
-        int enemyCountOnScreen;
+        public int enemyCountOnScreen;
 
         private void Awake()
         {
@@ -54,7 +54,8 @@ namespace Max_Almog.MyCompany.MyGame
 
         public void AddEnemy()
         {
-            enemyCountOnScreen++;
+            if (!PhotonNetwork.IsMasterClient) return;
+                enemyCountOnScreen++;
         }
     }
 }
