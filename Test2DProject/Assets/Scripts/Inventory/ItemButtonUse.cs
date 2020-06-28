@@ -11,10 +11,12 @@ namespace Max_Almog.MyCompany.MyGame
         public enum ItemButtons {normalHp, Mana, BigHp };
         public ItemButtons buttons;
         Slot parentSlot;
+        PlayerUI owningPlayerUI;
 
         private void Start()
         {
             parentSlot = GetComponentInParent<Slot>();
+            owningPlayerUI = parentSlot.inventory.GetComponent<PlayerUI>();
         }
 
         public void OnPointerClick()
