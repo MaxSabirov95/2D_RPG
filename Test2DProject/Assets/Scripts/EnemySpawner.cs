@@ -50,8 +50,8 @@ namespace Max_Almog.MyCompany.MyGame
                 //enemyCountOnScreen = enemyToSpawn;
                 if (enemyToSpawn < maxEnemySpawn)
                 {
-                    enemyToSpawn++;
                     enemyCountOnScreen = enemyToSpawn;
+                    enemyToSpawn++;
                 }
             }
         }
