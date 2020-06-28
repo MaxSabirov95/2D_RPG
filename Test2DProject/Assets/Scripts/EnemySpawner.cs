@@ -29,6 +29,7 @@ namespace Max_Almog.MyCompany.MyGame
         public float minX;
         public float maxX;
         
+        [PunRPC]
         public void FlagEnemyDeath(Enemy e)
         {
             if (!PhotonNetwork.IsMasterClient) return;
