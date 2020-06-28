@@ -24,25 +24,25 @@ namespace Max_Almog.MyCompany.MyGame
             switch (buttons)
             {
                 case ItemButtons.normalHp:
-                    if (BlackBoard.playerUI.WholeHP > BlackBoard.playerUI.HP)
+                    if (owningPlayerUI.WholeHP > owningPlayerUI.HP)
                     {
-                        BlackBoard.playerUI.HP += 20;
+                        owningPlayerUI.HP += 20;
                         parentSlot.FlagNotFull();
                         Destroy(gameObject);
                     }
                     break;
                 case ItemButtons.Mana:
-                    if (BlackBoard.playerUI.WholeMana > BlackBoard.playerUI.Mana)
+                    if (owningPlayerUI.WholeMana > owningPlayerUI.Mana)
                     {
-                        BlackBoard.playerUI.Mana += 20;
+                        owningPlayerUI.Mana += 20;
                         parentSlot.FlagNotFull();
                         Destroy(gameObject);
                     }
                     break;
                 case ItemButtons.BigHp:
-                    if (BlackBoard.playerUI.WholeHP > BlackBoard.playerUI.HP)
+                    if (owningPlayerUI.WholeHP > owningPlayerUI.HP)
                     {
-                        BlackBoard.playerUI.HP += 40;
+                        owningPlayerUI.HP += 40;
                         parentSlot.FlagNotFull();
                         Destroy(gameObject);
                     }
