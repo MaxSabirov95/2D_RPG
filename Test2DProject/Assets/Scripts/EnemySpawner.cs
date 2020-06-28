@@ -29,6 +29,11 @@ namespace Max_Almog.MyCompany.MyGame
         public float minX;
         public float maxX;
         
+        public void CountEnemyDeath()
+        {
+            photonView.RPC("FlagEnemyDeath", RpcTarget.AllBuffered);
+        }
+
         [PunRPC]
         public void FlagEnemyDeath()
         {
