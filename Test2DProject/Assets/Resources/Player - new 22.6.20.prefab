@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 6
   isFull: 0
 --- !u!61 &3345255769558452436
@@ -714,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 7
   isFull: 0
 --- !u!61 &3345255769585204380
@@ -830,6 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 14
   isFull: 0
 --- !u!61 &3345255769586630318
@@ -1180,6 +1183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 9
   isFull: 0
 --- !u!61 &3345255769933993805
@@ -1296,6 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 1
   isFull: 0
 --- !u!61 &3345255770067031332
@@ -1412,6 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 5
   isFull: 0
 --- !u!61 &3345255770171663448
@@ -1762,6 +1768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 15
   isFull: 0
 --- !u!61 &3345255770434207599
@@ -1956,6 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 11
   isFull: 0
 --- !u!61 &3345255770702209570
@@ -2072,6 +2080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 10
   isFull: 0
 --- !u!61 &3345255770733994415
@@ -2306,6 +2315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 4
   isFull: 0
 --- !u!61 &3345255770832247464
@@ -2657,6 +2667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 8
   isFull: 0
 --- !u!61 &3345255771059565751
@@ -2773,6 +2784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 13
   isFull: 0
 --- !u!61 &3345255771070651139
@@ -2889,6 +2901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 12
   isFull: 0
 --- !u!61 &3345255771095313623
@@ -3005,6 +3018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 2
   isFull: 0
 --- !u!61 &3345255771221688262
@@ -3121,6 +3135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 0
   isFull: 0
 --- !u!61 &3345255771254531839
@@ -3445,6 +3460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a446338a2794a488f27321b92941e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   slotNumber: 3
   isFull: 0
 --- !u!61 &3345255771562103435
