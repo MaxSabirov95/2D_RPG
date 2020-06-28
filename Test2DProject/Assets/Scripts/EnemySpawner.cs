@@ -9,8 +9,8 @@ namespace Max_Almog.MyCompany.MyGame
     public class EnemySpawner : MonoBehaviourPun
     {
         public int maxEnemySpawn=8;
-        public List<Enemy> enemiesOnScreen = new List<Enemy>();
         int enemyToSpawn = 2;
+        int enemyCountOnScreen;
 
         private void Awake()
         {
@@ -30,11 +30,11 @@ namespace Max_Almog.MyCompany.MyGame
         public float maxX;
         
         [PunRPC]
-        public void FlagEnemyDeath(Enemy e)
+        public void FlagEnemyDeath()
         {
             if (!PhotonNetwork.IsMasterClient) return;
-            enemiesOnScreen.Remove(e);
-            if (enemiesOnScreen.Count == 0)
+            enemyCountOnScreen--;
+            if (enemyCountOnScreen == 0)
             {
                 
                 for (int i = 0; i < enemyToSpawn; i++)
@@ -47,9 +47,9 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        public void AddEnemy(Enemy e)
+        public void AddEnemy()
         {
-            enemiesOnScreen.Add(e);
+            enemyCountOnScreen++;
         }
     }
 }
