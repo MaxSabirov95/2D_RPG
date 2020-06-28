@@ -38,7 +38,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void FlagEnemyDeath()
         {
-            if (!PhotonNetwork.IsMasterClient) return;
+            //if (!PhotonNetwork.IsMasterClient) return;
             enemyCountOnScreen--;
             if (enemyCountOnScreen == 0)
             {
