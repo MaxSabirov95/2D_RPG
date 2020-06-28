@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    private Inventory inventory;
+    [HideInInspector]
+    public Inventory inventory;
     public int slotNumber;
     public bool isFull;
 
