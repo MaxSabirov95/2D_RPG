@@ -8,7 +8,7 @@ namespace Max_Almog.MyCompany.MyGame
 {
     public class EnemySpawner : MonoBehaviourPun
     {
-        public int maxEnemySpawn = 8;
+        public int maxEnemySpawn=8;
         int enemyToSpawn = 2;
         public int enemyCountOnScreen;
 
@@ -21,6 +21,7 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (PhotonNetwork.IsMasterClient)
             {
+                enemyCountOnScreen++;
                 Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
                 PhotonNetwork.Instantiate("FireSlime", spawnPoint, Quaternion.identity);
             }
@@ -44,7 +45,6 @@ namespace Max_Almog.MyCompany.MyGame
                 
                 for (int i = 0; i < enemyToSpawn; i++)
                 {
-                    enemyCountOnScreen = 1;
                     Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
                     PhotonNetwork.Instantiate("FireSlime", spawnPoint,Quaternion.identity);
                 }
@@ -53,10 +53,10 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        public void AddEnemy()
-        {
-            if (PhotonNetwork.IsMasterClient)
-                enemyCountOnScreen++;
-        }
+        //public void AddEnemy()
+        //{
+        //    if (PhotonNetwork.IsMasterClient)
+        //        enemyCountOnScreen++;
+        //}
     }
 }
