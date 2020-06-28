@@ -42,11 +42,11 @@ namespace Max_Almog.MyCompany.MyGame
             enemyCountOnScreen--;
             if (enemyCountOnScreen == 0)
             {
-                
                 for (int i = 0; i < enemyToSpawn; i++)
                 {
                     Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
                     PhotonNetwork.Instantiate("FireSlime", spawnPoint,Quaternion.identity);
+                    enemyCountOnScreen++;
                 }
                 if (enemyToSpawn < maxEnemySpawn)
                     enemyToSpawn++;
