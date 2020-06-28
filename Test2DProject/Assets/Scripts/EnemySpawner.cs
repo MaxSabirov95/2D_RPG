@@ -21,6 +21,7 @@ namespace Max_Almog.MyCompany.MyGame
         {
             if (PhotonNetwork.IsMasterClient)
             {
+                enemyCountOnScreen++;
                 Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), transform.position.y);
                 PhotonNetwork.Instantiate("FireSlime", spawnPoint, Quaternion.identity);
             }
@@ -31,7 +32,7 @@ namespace Max_Almog.MyCompany.MyGame
         
         public void CountEnemyDeath()
         {
-            photonView.RPC("FlagEnemyDeath", RpcTarget.AllBuffered);
+            photonView.RPC("FlagEnemyDeath", RpcTarget.MasterClient);
         }
 
         [PunRPC]
@@ -52,10 +53,10 @@ namespace Max_Almog.MyCompany.MyGame
             }
         }
 
-        public void AddEnemy()
-        {
-            if (!PhotonNetwork.IsMasterClient) return;
-                enemyCountOnScreen++;
-        }
+        //public void AddEnemy()
+        //{
+        //    if (PhotonNetwork.IsMasterClient)
+        //        enemyCountOnScreen++;
+        //}
     }
 }

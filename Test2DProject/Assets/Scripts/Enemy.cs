@@ -63,7 +63,7 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void StartProperties()
         {
-            BlackBoard.spawnerInstance.AddEnemy();
+            //BlackBoard.spawnerInstance.AddEnemy();
             MinCoins = MinGiveCoinsAfterDeath;
             MaxCoins = MaxGiveCoinsAfterDeath;
             HPText.text = "" + HP.ToString("f0");
