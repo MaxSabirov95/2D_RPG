@@ -105,8 +105,8 @@ namespace Max_Almog.MyCompany.MyGame
                         photonView.RPC("DropItems", RpcTarget.MasterClient);
                     }
                     //goals.Killquest();
-                    if(damagingPlayer)
-                    damagingPlayer.XP += GiveXP;
+                    if (damagingPlayer)
+                        damagingPlayer.XP += GiveXP;
                     break;
                 default:
                     break;
