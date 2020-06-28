@@ -32,7 +32,6 @@ namespace Max_Almog.MyCompany.MyGame
         public ParticleSystem LevelUp;
         private void Awake()
         {
-            BlackBoard.playerUI = this;
             if (!photonView.IsMine)
             {
                 playerCanvas.SetActive(false);

@@ -15,12 +15,14 @@ namespace Max_Almog.MyCompany.MyGame
         public GameObject inventoryBoard;
         private bool InventoryBoard;
 
+        private PlayerUI owningPlayerUI;
 
         private void Start()
         {
             skillPointBoard.SetActive(false);
             SkillBoard = false;
             InventoryBoard = false;
+            owningPlayerUI = GetComponent<PlayerUI>();
         }
         void Update()
         {
@@ -57,7 +59,7 @@ namespace Max_Almog.MyCompany.MyGame
             if (skillpoints > 0)
             {
                 skillpoints--;
-                BlackBoard.playerUI.WholeHP += 15;
+                owningPlayerUI.WholeHP += 15;
             }
         }
         public void SkillPointToMana()
@@ -65,7 +67,7 @@ namespace Max_Almog.MyCompany.MyGame
             if (skillpoints > 0)
             {
                 skillpoints--;
-                BlackBoard.playerUI.WholeMana += 15;
+                owningPlayerUI.WholeMana += 15;
             }
         }
     }
