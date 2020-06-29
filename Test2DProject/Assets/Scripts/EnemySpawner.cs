@@ -9,8 +9,8 @@ namespace Max_Almog.MyCompany.MyGame
     public class EnemySpawner : MonoBehaviourPun
     {
         public int maxEnemySpawn=8;
-        int enemyToSpawn = 2;
-        public int enemyCountOnScreen;
+        public static int enemyToSpawn = 2;
+        public static int enemyCountOnScreen;
 
         private void Awake()
         {
@@ -55,11 +55,5 @@ namespace Max_Almog.MyCompany.MyGame
                 }
             }
         }
-
-        //public void AddEnemy()
-        //{
-        //    if (PhotonNetwork.IsMasterClient)
-        //        enemyCountOnScreen++;
-        //}
     }
 }
