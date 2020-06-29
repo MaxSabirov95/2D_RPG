@@ -27,6 +27,8 @@ namespace Max_Almog.MyCompany.MyGame
 
         public Quest quest;
 
+        public static int killCount;
+
         PlayerMovement playerMove;
 
         public ParticleSystem LevelUp;
@@ -50,7 +52,7 @@ namespace Max_Almog.MyCompany.MyGame
             XPText.text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
             LevelText.text = "" + Level.ToString("f0")+"  Level";
             superAttackTimerText.text = "" + superAttackTimer.ToString("f0");
-            enemyDieCounter.text = "" + Enemy.deathCounter.ToString();
+            enemyDieCounter.text = "" + killCount.ToString();
 
             if (HP <= 0)
             {
