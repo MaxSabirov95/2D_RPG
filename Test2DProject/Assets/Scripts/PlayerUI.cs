@@ -45,6 +45,12 @@ namespace Max_Almog.MyCompany.MyGame
             playerMove = GetComponent<PlayerMovement>();
         }
 
+        [PunRPC]
+        void UpdateKillCounter()
+        {
+            enemyDieCounter.text = "" + killCount.ToString();
+        }
+
         void Update()
         {
             HPText.text = "HP " + HP.ToString("f0")+ "/" + WholeHP.ToString("f0");
@@ -52,7 +58,7 @@ namespace Max_Almog.MyCompany.MyGame
             XPText.text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
             LevelText.text = "" + Level.ToString("f0")+"  Level";
             superAttackTimerText.text = "" + superAttackTimer.ToString("f0");
-            enemyDieCounter.text = "" + killCount.ToString();
+            photonView.RPC("UpdateKillCounter", RpcTarget.AllBuffered);
 
             if (HP <= 0)
             {
