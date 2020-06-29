@@ -58,7 +58,7 @@ namespace Max_Almog.MyCompany.MyGame
             XPText.text = "XP " + XP.ToString("f0")+ "/" + WholeXP.ToString("f0");
             LevelText.text = "" + Level.ToString("f0")+"  Level";
             superAttackTimerText.text = "" + superAttackTimer.ToString("f0");
-            photonView.RPC("UpdateKillCounter", RpcTarget.AllBuffered);
+            UpdateKillCounter();
 
             if (HP <= 0)
             {
