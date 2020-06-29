@@ -8,8 +8,8 @@ namespace Max_Almog.MyCompany.MyGame
 {
     public class EnemySpawner : MonoBehaviourPun
     {
-        public static int maxEnemySpawn = 8;
-        int enemyToSpawn = 2;
+        public int maxEnemySpawn=8;
+        public static int enemyToSpawn = 2;
         public static int enemyCountOnScreen;
 
         private void Awake()
