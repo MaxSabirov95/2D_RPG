@@ -3635,7 +3635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemySpawn: 8
-  minX: 40
+  minX: 50
   maxX: 70
 --- !u!114 &1756338239
 MonoBehaviour:
