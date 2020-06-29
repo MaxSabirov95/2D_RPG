@@ -61,7 +61,6 @@ namespace Max_Almog.MyCompany.MyGame
         [PunRPC]
         public void StartProperties()
         {
-            //BlackBoard.spawnerInstance.AddEnemy();
             MinCoins = MinGiveCoinsAfterDeath;
             MaxCoins = MaxGiveCoinsAfterDeath;
             HPText.text = "" + HP.ToString("f0");
@@ -87,7 +86,10 @@ namespace Max_Almog.MyCompany.MyGame
             if (HP <= 0)
             {
                 isDead = true;
-                PlayerUI.killCount++;
+                if (isDead)
+                {
+                    PlayerUI.killCount++;
+                }
                 photonView.RPC("OnDeath", RpcTarget.AllBuffered);
             }
         }
