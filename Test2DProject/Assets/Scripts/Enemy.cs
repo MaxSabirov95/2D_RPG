@@ -50,11 +50,6 @@ namespace Max_Almog.MyCompany.MyGame
                 HP = (int)stream.ReceiveNext();
                 HPText.GetComponent<TMP_Text>().text = "" + HP.ToString("f0");
                 isDead = (bool)stream.ReceiveNext();
-                //if (isDead)
-                //{
-                //    photonView.RPC("OnDeath", RpcTarget.AllBuffered);
-                //}
-                //isDead = (bool)stream.ReceiveNext();
             }
         }
 
