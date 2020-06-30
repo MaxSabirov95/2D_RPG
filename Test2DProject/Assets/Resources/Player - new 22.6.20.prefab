@@ -8989,7 +8989,7 @@ MonoBehaviour:
   attackPos: {fileID: 8839390557022411193}
   playerAnimator: {fileID: 8839390557034084323}
   playerSpeed: 8
-  playerJump: 7
+  playerJump: 5
   attackRange: 1.45
   startTimeBTWAtck: 0.3
   playerAttackDamage: 10
